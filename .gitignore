@@ -1,0 +1,30 @@
+# WordPress & server leftovers — not needed for static portfolio
+wp-content/
+wp-includes/
+wp-json/
+wp-login.html
+wp-signup.html
+wp-activate.html
+xmlrpc.html
+feed
+comments/
+hello-world/
+elementor-page-718/
+elementor-page-718.html
+hello-world.html
+
+# Backup covers (internal use only)
+assets/covers_backup/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large video files already in assets
+assets/covers/*.mp4
+assets/covers/*.mov
+assets/covers_backup/

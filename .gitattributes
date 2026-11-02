@@ -1,0 +1,7 @@
+*.mp4 -delta
+*.mov -delta
+*.webm -delta
+*.webp -delta
+*.png -delta
+*.jpg -delta
+*.jpeg -delta

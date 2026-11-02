@@ -1,0 +1,17 @@
+{
+  "name": "mvrtnnii-portfolio",
+  "version": "1.0.0",
+  "description": "Complete clone of mvrtnnii portfolio website (https://mvrtnnii.xo.je/)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "clone",
+    "website"
+  ],
+  "author": "Martin J Mathew",
+  "license": "ISC"
+}
