@@ -1,16 +1,17 @@
 {
   "name": "mvrtnnii-portfolio",
   "version": "1.0.0",
-  "description": "Complete clone of mvrtnnii portfolio website (https://mvrtnnii.xo.je/)",
+  "description": "Martin J Mathew - Associate Creative Director Portfolio",
   "main": "server.js",
   "scripts": {
+    "build": "echo 'Static build complete'",
     "start": "node server.js",
     "dev": "node server.js"
   },
   "keywords": [
     "portfolio",
-    "clone",
-    "website"
+    "creative-director",
+    "martin-j-mathew"
   ],
   "author": "Martin J Mathew",
   "license": "ISC"
