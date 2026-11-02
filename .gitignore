@@ -1,7 +1,4 @@
-# WordPress & server leftovers — not needed for static portfolio
-wp-content/
-wp-includes/
-wp-json/
+# Server / unused endpoints
 wp-login.html
 wp-signup.html
 wp-activate.html
@@ -23,8 +20,3 @@ npm-debug.log*
 # OS
 .DS_Store
 Thumbs.db
-
-# Large video files already in assets
-assets/covers/*.mp4
-assets/covers/*.mov
-assets/covers_backup/
