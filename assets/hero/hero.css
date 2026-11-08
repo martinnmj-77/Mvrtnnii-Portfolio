@@ -1,8 +1,7 @@
 /* ==========================================================================
    HERO SECTION STYLESHEET
    Scoped to .mj-hero (and site header alignment)
-   Aspect Ratio: 2458 / 1512
-   Type Units: cqw (Container Query Width)
+   Target Design: Exact Match to Mockup Image 2
    Headline Font: "Climate Crisis" (font-variation-settings: "YEAR" 1979)
    Chips Font: "Inter" weight 300
    Subtitle Font: "Inter" weight 500
@@ -29,11 +28,13 @@
 
 /* ==========================================================================
    1. FULL-BLEED HERO WRAPPER
-   Carries the old restored background edge-to-edge
+   Carries the dark diagonal striped background edge-to-edge
    ========================================================================== */
 .mj-hero {
   position: relative;
   width: 100%;
+  height: calc(100svh - var(--nav-h, 70px));
+  min-height: 560px;
   margin: 0;
   padding: 0;
   background-color: #000000;
@@ -46,29 +47,26 @@
 }
 
 /* ==========================================================================
-   2. THE STAGE (Pure transparent layout box, no visible edge or panel)
-   width = min(100%, calc((100svh - var(--nav-h)) * 1.6257))
-   aspect-ratio = 2458 / 1512 (~1.62566)
+   2. HERO STAGE CONTAINER
+   Full-width transparent layout box inside the hero
    ========================================================================== */
 .mj-hero .mj-hero-stage {
   position: relative;
-  width: min(100%, calc((100svh - var(--nav-h, 70px)) * 1.6257));
-  aspect-ratio: 2458 / 1512;
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   overflow: visible;
-  container-type: inline-size;
   box-sizing: border-box;
 }
 
 /* ==========================================================================
-   3. HEADLINE
-   Real <h1>, centered horizontally on stage center line.
-   Font: "Climate Crisis" with solid variation "YEAR" 1979.
-   Line 1: cap top at 2% gap below header
-   Line 2: "MARTINN" spans ~70% of stage width (left ~15%, right ~85%)
+   3. HEADLINE ("HI, I'M" / "MARTINN")
+   Scaled up ~1.4x (Line 1 ~38vw, Line 2 ~63vw), centered horizontally
+   Font: "Climate Crisis" with solid variation "YEAR" 1979
    ========================================================================== */
 .mj-hero .mj-hero-headline {
   margin: 0;
@@ -93,41 +91,44 @@
   transform: translateX(-50%);
   white-space: nowrap;
   text-align: center;
-  font-size: 10.4cqw;
+  font-size: clamp(44px, 9.5vw, 160px);
   will-change: transform, opacity;
   animation: mjHeadlineFadeUp 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Line 1: "HI, I'M" - 2% gap below the header */
+/* Line 1: "HI, I'M" - centered, ~38vw wide */
 .mj-hero .mj-hero-line-1 {
-  top: 2%;
+  top: 3%;
   animation-delay: 0ms;
 }
 
-/* Line 2: "MARTINN" - spans ~70% of stage width, centered */
+/* Line 2: "MARTINN" - centered, ~63vw wide (left ~18.5%, right ~81.5%) */
 .mj-hero .mj-hero-line-2 {
-  top: 18.5%;
+  top: 24%;
   animation-delay: 120ms;
 }
 
 /* ==========================================================================
-   4. HEAD IMAGE / PLACEHOLDER
-   Centered horizontally on the stage center line (center at 50%)
-   Width: 31.3%, Top: 33%, Height: 62%
-   In front of headline (z-index: 5), covering part of "R" and "T"
+   4. AVATAR (3D cap + sunglasses)
+   Scaled up ~1.15x, centered slightly right of center (~52% of viewport width)
+   Overlaps headline: cap covers bottom ~40% of middle letters of "MARTINN"
+   Layered ABOVE headline (z-index: 5)
+   Bottom ends near bottom of hero
    ========================================================================== */
 .mj-hero .mj-hero-head-wrap {
   position: absolute;
-  left: 50%;
+  left: 52%;
   transform: translateX(-50%);
-  width: 31.3%;
-  top: 33%;
-  height: 62%;
-  bottom: 5%;
+  bottom: 0;
+  height: 64%;
+  aspect-ratio: 768 / 798;
   z-index: 5;
   pointer-events: none;
   will-change: transform, opacity;
   animation: mjHeadScaleIn 800ms cubic-bezier(0.16, 1, 0.3, 1) 240ms both;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .mj-hero .mj-hero-head-img {
@@ -135,7 +136,7 @@
   height: 100%;
   object-fit: contain;
   object-position: bottom center;
-  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.55));
+  filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.6));
   display: block;
 }
 
@@ -150,8 +151,12 @@
 
 /* ==========================================================================
    5. FIVE GLASS LABEL CHIPS
-   Radius: 0.9cqw, Height: 4.3cqw
-   Dark glass fill, 2px metallic border, inset highlight, text Inter 300
+   Scaled up ~1.15x, spread further out from avatar
+   Content Creation: x 18.5%, y 54%
+   Branding: x 6%, y 65%
+   Copywriting: x 67%, y 53%
+   Advertising: x 83%, y 63%
+   Creative designing: x 66%, y 80%
    Floating animation: translateY between 0 and -6px
    ========================================================================== */
 .mj-hero .mj-hero-chips {
@@ -166,8 +171,8 @@
 
 .mj-hero .mj-hero-chip {
   position: absolute;
-  height: 4.3cqw;
-  border-radius: 0.9cqw;
+  padding: 10px 24px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -176,16 +181,16 @@
   user-select: none;
   cursor: default;
 
-  /* Dark Liquid Glass Fill & 2px Metallic Border Gradient */
-  border: 2px solid transparent;
+  /* Glass Styling: translucent dark fill, thin light border, soft shadow */
+  border: 1.5px solid transparent;
   background: 
-    linear-gradient(145deg, #1d1d1d, #0c0c0c) padding-box,
-    linear-gradient(145deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 100%) border-box;
+    linear-gradient(145deg, rgba(29, 29, 29, 0.85), rgba(12, 12, 12, 0.85)) padding-box,
+    linear-gradient(145deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.12) 100%) border-box;
   box-shadow: 
     inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    0 10px 24px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+    0 10px 24px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   will-change: transform, opacity;
   animation: 
@@ -195,78 +200,68 @@
 
 .mj-hero .mj-hero-chip-text {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-weight: 300;
-  font-size: 2.3cqw;
+  font-weight: 400;
+  font-size: clamp(13px, 1.2vw, 19px);
   letter-spacing: 0.01em;
-  background: linear-gradient(180deg, #ffffff 0%, #9a9a9a 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #cccccc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  color: transparent;
+  color: #ffffff;
   display: inline-block;
-  line-height: 1;
+  line-height: 1.1;
 }
 
-/* Mirrored Chip Coordinates & Margins:
-   - "Content Creation" left 10.5%  <-> "Copywriting" right margin 10.5%
-   - "Branding" left 4.8%           <-> "Advertising" right margin 4.8%
-   - Subtitle left 7.2%             <-> "Creative designing" right margin 7.2%
-*/
-
-/* 1. "Content Creation": left 10.5%, top 48.6%, width 21.4% */
+/* 1. "Content Creation": x ~18%, y 54% (lines up exactly with left edge of "M" in MARTINN) */
 .mj-hero .mj-hero-chip-content {
-  left: 10.5%;
-  top: 48.6%;
-  width: 21.4%;
+  left: calc(50% - 31.5vw);
+  top: 54%;
   animation-delay: 400ms, 0s;
 }
 
-/* 2. "Copywriting": right margin 10.5% (right: 10.5%), top 48.3%, width 15.4% */
-.mj-hero .mj-hero-chip-copywriting {
-  right: 10.5%;
-  top: 48.3%;
-  width: 15.4%;
-  animation-delay: 480ms, 1.4s;
-}
-
-/* 3. "Branding": left 4.8%, top 63.2%, width 16.7% */
+/* 2. "Branding": x 6%, y 65% (far left, lower) */
 .mj-hero .mj-hero-chip-branding {
-  left: 4.8%;
-  top: 63.2%;
-  width: 16.7%;
+  left: 6%;
+  top: 65%;
   animation-delay: 560ms, 2.6s;
 }
 
-/* 4. "Advertising": right margin 4.8% (right: 4.8%), top 61%, width 14.5% */
+/* 3. "Copywriting": x 67%, y 53% (right side, higher) */
+.mj-hero .mj-hero-chip-copywriting {
+  left: 67%;
+  top: 53%;
+  animation-delay: 480ms, 1.4s;
+}
+
+/* 4. "Advertising": x 83%, y 63% (far right, lower) */
 .mj-hero .mj-hero-chip-advertising {
-  right: 4.8%;
-  top: 61%;
-  width: 14.5%;
+  left: 83%;
+  top: 63%;
   animation-delay: 640ms, 0.8s;
 }
 
-/* 5. "Creative designing": right margin 7.2% (right: 7.2%), top 76.6%, width 24% */
+/* 5. "Creative designing": x 66%, y 80% (right side, lowest) */
 .mj-hero .mj-hero-chip-designing {
-  right: 7.2%;
-  top: 76.6%;
-  width: 24%;
+  left: 66%;
+  top: 80%;
   animation-delay: 720ms, 2.0s;
 }
 
 /* ==========================================================================
    6. SUBTITLE (bottom-left)
-   left 7.2%, top 77% (Mirrors "Creative designing" right margin 7.2%)
-   Two lines, left-aligned, white, Inter 500, size 2.2cqw, line-height 1.15
+   Left edge lines up exactly with "M" in MARTINN and Content Creation
+   Vertical position: ~82% of hero height (around 80-86%)
+   Two lines, left-aligned, white, Inter 500
    ========================================================================== */
 .mj-hero .mj-hero-subtitle {
   position: absolute;
-  left: 7.2%;
-  top: 77%;
+  left: calc(50% - 31.5vw);
+  top: 82%;
   z-index: 6;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 500;
-  font-size: 2.2cqw;
-  line-height: 1.15;
+  font-size: clamp(14px, 1.25vw, 19px);
+  line-height: 1.25;
   color: #ffffff;
   text-align: left;
   display: flex;
@@ -322,7 +317,6 @@
   }
 }
 
-/* Slow floating idle motion for chips (translateY between 0 and -6px) */
 @keyframes mjChipFloat {
   0% {
     transform: translateY(0);
@@ -354,8 +348,8 @@
 }
 
 /* ==========================================================================
-   9. MOBILE RESPONSIVE (under 768px)
-   Drop absolute layout, stack centered on background with 20px padding
+   9. MOBILE & TABLET RESPONSIVE (under 992px)
+   Scale headline down, keep avatar overlapping, chips wrap cleanly
    ========================================================================== */
 @keyframes mjHeadlineFadeUpMobile {
   from {
@@ -368,46 +362,28 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .mj-hero {
+    height: auto;
+    min-height: calc(100svh - var(--nav-h, 70px));
     padding: 24px 20px 48px;
-    background-color: #000000;
-    background-image: url("/wp-content/uploads/2026/10/sl_0210121_40570_43-scaled.jpg");
-    background-size: cover;
-    background-position: center center;
     overflow-x: hidden;
-    width: 100%;
-    box-sizing: border-box;
   }
 
   .mj-hero .mj-hero-stage {
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: auto;
     height: auto;
-    overflow: visible;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: transparent !important;
-    padding: 0;
-    margin: 0 auto;
-    box-sizing: border-box;
   }
 
-  /* 1. Headline on two lines, "MARTINN" fills about 90% width */
   .mj-hero .mj-hero-headline {
     position: static;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    max-width: 100%;
-    z-index: 1;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
   }
 
   .mj-hero .mj-hero-line {
@@ -416,27 +392,17 @@
     top: auto;
     transform: none;
     width: 100%;
-    max-width: 100%;
-    font-size: clamp(34px, 13vw, 56px);
+    font-size: clamp(34px, 13vw, 76px);
     line-height: 0.9;
-    letter-spacing: -0.01em;
     text-align: center;
-    display: block;
-    margin: 0 auto;
-    box-sizing: border-box;
     animation: mjHeadlineFadeUpMobile 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
-  .mj-hero .mj-hero-line-1 {
-    animation-delay: 0ms;
-  }
-
   .mj-hero .mj-hero-line-2 {
+    margin-top: 6px;
     animation-delay: 120ms;
-    margin-top: 4px;
   }
 
-  /* 2. Head image, width 70%, overlapping bottom half of line 2 */
   .mj-hero .mj-hero-head-wrap {
     position: relative;
     left: auto;
@@ -447,27 +413,12 @@
     width: 70%;
     max-width: 320px;
     height: auto;
-    aspect-ratio: 769 / 937;
+    aspect-ratio: 768 / 798;
     margin-top: -10vw;
     z-index: 3;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
     animation: mjHeadlineFadeUpMobile 700ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
   }
 
-  .mj-hero .mj-hero-head-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .mj-hero .mj-hero-head-placeholder {
-    width: 100%;
-    height: 100%;
-  }
-
-  /* 3. Five chips in a centered, wrapping row */
   .mj-hero .mj-hero-chips {
     position: static;
     display: flex;
@@ -476,12 +427,9 @@
     align-items: center;
     gap: 10px;
     width: 100%;
-    max-width: 440px;
+    max-width: 480px;
     margin: 24px auto 0;
-    padding: 0;
-    z-index: 4;
     list-style: none;
-    box-sizing: border-box;
   }
 
   .mj-hero .mj-hero-chip {
@@ -490,21 +438,14 @@
     top: auto;
     right: auto;
     bottom: auto;
-    width: auto;
-    height: auto;
-    padding: 12px 20px;
-    border-radius: 10px;
-    box-sizing: border-box;
+    padding: 10px 20px;
     animation: mjChipFadeIn 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .mj-hero .mj-hero-chip-text {
     font-size: clamp(13px, 3.8vw, 16px);
-    line-height: 1.2;
-    white-space: nowrap;
   }
 
-  /* 4. Subtitle centered */
   .mj-hero .mj-hero-subtitle {
     position: static;
     left: auto;
@@ -515,7 +456,5 @@
     align-items: center;
     font-size: clamp(14px, 4.2vw, 18px);
     line-height: 1.35;
-    z-index: 4;
-    box-sizing: border-box;
   }
 }
