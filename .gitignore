@@ -12,6 +12,7 @@ hello-world.html
 
 # Backup covers (internal use only)
 assets/covers_backup/
+assets/hero/verification/
 
 # Node
 node_modules/

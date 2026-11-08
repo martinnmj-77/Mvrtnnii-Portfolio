@@ -13,272 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Climate+Crisis&display=block" id="climate-crisis-font-css">
-<style id="hero-font-lock">
-  /* Lock h1 font immediately before any external CSS loads */
-  .elementor-element-5e7f955 .elementor-heading-title,
-  .elementor-element-5e7f955 h1,
-  h1.elementor-heading-title {
-    font-family: "Climate Crisis", sans-serif !important;
-    font-display: block;
-  }
-  @font-face {
-    font-family: "Climate Crisis";
-    font-display: block;
-  }
 
-  /* Full-viewport Hero Layout & 6 Liquid Glass Badges */
-  .elementor-11 .elementor-element.elementor-element-420fa8b {
-    height: calc(100vh - 75px) !important;
-    min-height: 600px !important;
-    max-height: 1050px !important;
-    position: relative !important;
-    overflow: hidden !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 16px 24px 20px !important;
-    box-sizing: border-box !important;
-    background-image: url("./wp-content/uploads/2026/10/sl_0210121_40570_43-scaled.jpg") !important;
-    background-size: cover !important;
-    background-position: center !important;
-  }
-  
-  .hero-inner-container {
-    width: 100% !important;
-    max-width: 1400px !important;
-    height: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    position: relative !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  .hero-title-widget {
-    width: 100% !important;
-    text-align: center !important;
-    z-index: 1 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  .hero-title-widget .elementor-widget-container {
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-  .elementor-11 .elementor-element.elementor-element-5e7f955 .elementor-heading-title,
-  h1.elementor-heading-title {
-    font-family: "Climate Crisis", sans-serif !important;
-    font-size: clamp(54px, 6.6vw, 105px) !important;
-    line-height: 0.95 !important;
-    letter-spacing: 1px !important;
-    color: #ffffff !important;
-    text-align: center !important;
-    text-transform: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    text-shadow: 0 4px 25px rgba(0, 0, 0, 0.7) !important;
-    word-break: normal !important;
-  }
-
-  .hero-stage-container {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    position: relative !important;
-    z-index: 2 !important;
-    flex: 1 !important;
-    min-height: 0 !important;
-    margin: 4px 0 !important;
-  }
-
-  .glass-pills-col {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 20px !important;
-    z-index: 3 !important;
-    flex: 1 !important;
-    max-width: 250px !important;
-  }
-  .glass-pills-left {
-    align-items: flex-end !important;
-  }
-  .glass-pills-right {
-    align-items: flex-start !important;
-  }
-
-  .liquid-glass-card {
-    position: relative !important;
-    padding: 12px 28px !important;
-    border-radius: 9999px !important;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(0, 0, 0, 0.5) 100%), rgba(14, 14, 14, 0.65) !important;
-    backdrop-filter: blur(16px) saturate(190%) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.28) !important;
-    box-shadow: 
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.75),
-      inset 0 -2px 4px 0 rgba(0, 0, 0, 0.7),
-      0 10px 25px -4px rgba(0, 0, 0, 0.6),
-      0 0 12px 0 rgba(255, 255, 255, 0.08) !important;
-    color: #ffffff !important;
-    font-family: 'Figtree', sans-serif !important;
-    font-size: 15px !important;
-    font-weight: 500 !important;
-    letter-spacing: 0.4px !important;
-    white-space: nowrap !important;
-    cursor: default !important;
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease !important;
-    user-select: none !important;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
-  }
-  .liquid-glass-card::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 1px !important;
-    left: 15% !important;
-    right: 15% !important;
-    height: 1px !important;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent) !important;
-    border-radius: 9999px !important;
-    pointer-events: none !important;
-  }
-  .liquid-glass-card:hover {
-    transform: translateY(-3px) scale(1.03) !important;
-    border-color: rgba(255, 255, 255, 0.45) !important;
-    box-shadow: 
-      inset 0 1px 2px 0 rgba(255, 255, 255, 0.95),
-      inset 0 -2px 4px 0 rgba(0, 0, 0, 0.8),
-      0 14px 32px -4px rgba(0, 0, 0, 0.8),
-      0 0 16px 0 rgba(255, 255, 255, 0.15) !important;
-  }
-
-  .hero-portrait-stage {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: flex-end !important;
-    position: relative !important;
-    z-index: 2 !important;
-    height: 100% !important;
-    max-height: 48vh !important;
-    padding: 0 20px !important;
-  }
-  .hero-portrait-img {
-    height: 100% !important;
-    max-height: 46vh !important;
-    width: auto !important;
-    object-fit: contain !important;
-    object-position: bottom center !important;
-    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.85)) !important;
-    display: block !important;
-  }
-
-  .hero-bottom-info {
-    z-index: 3 !important;
-    text-align: center !important;
-    max-width: 840px !important;
-    margin: 0 auto !important;
-    padding: 0 16px !important;
-  }
-  .hero-role-badge {
-    font-family: 'Figtree', sans-serif !important;
-    font-size: 13.5px !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 2.2px !important;
-    color: #a3e635 !important;
-    margin-bottom: 6px !important;
-    text-align: center !important;
-  }
-  .hero-statement-text {
-    font-family: 'Figtree', sans-serif !important;
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-    color: rgba(255, 255, 255, 0.88) !important;
-    font-weight: 400 !important;
-    margin: 0 auto !important;
-    text-align: center !important;
-    max-width: 780px !important;
-  }
-
-  /* Tablets */
-  @media (max-width: 1024px) {
-    .glass-pills-col { gap: 14px !important; max-width: 200px !important; }
-    .liquid-glass-card { padding: 10px 20px !important; font-size: 13.5px !important; }
-    .elementor-11 .elementor-element.elementor-element-5e7f955 .elementor-heading-title,
-    h1.elementor-heading-title {
-      font-size: clamp(48px, 6.5vw, 84px) !important;
-    }
-  }
-
-  /* Mobile */
-  @media (max-width: 767px) {
-    html, body {
-      overflow-x: hidden !important;
-      max-width: 100vw !important;
-      width: 100% !important;
-    }
-    .elementor-11 .elementor-element.elementor-element-420fa8b {
-      height: 100svh !important;
-      min-height: 560px !important;
-      max-height: none !important;
-      padding: 70px 16px 16px !important;
-      justify-content: space-between !important;
-    }
-    .elementor-11 .elementor-element.elementor-element-5e7f955 .elementor-heading-title,
-    h1.elementor-heading-title {
-      font-size: clamp(34px, 10vw, 48px) !important;
-      line-height: 1.02 !important;
-    }
-    .hero-stage-container {
-      flex-direction: column !important;
-      justify-content: center !important;
-      gap: 10px !important;
-      margin: 2px 0 !important;
-    }
-    .hero-portrait-stage {
-      max-height: 34vh !important;
-      order: 1 !important;
-      padding: 0 !important;
-    }
-    .hero-portrait-img {
-      max-height: 32vh !important;
-    }
-    .glass-pills-col {
-      flex-direction: row !important;
-      flex-wrap: wrap !important;
-      justify-content: center !important;
-      align-items: center !important;
-      gap: 8px !important;
-      max-width: 100% !important;
-      order: 2 !important;
-    }
-    .glass-pills-left, .glass-pills-right {
-      align-items: center !important;
-    }
-    .liquid-glass-card {
-      padding: 6px 14px !important;
-      font-size: 11.5px !important;
-    }
-    .hero-role-badge {
-      font-size: 12px !important;
-      letter-spacing: 1.5px !important;
-      margin-bottom: 4px !important;
-    }
-    .hero-statement-text {
-      font-size: 11.5px !important;
-      line-height: 1.35 !important;
-      max-width: 100% !important;
-    }
-    .elementor-11 .elementor-element.elementor-element-2157a0e .elementor-heading-title {
-      font-size: clamp(32px, 8vw, 44px) !important;
-      line-height: 1.15 !important;
-    }
-  }
-</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11"> 
@@ -5536,6 +5271,14 @@ div.wp-block-spectra-post-template,ul.wp-block-spectra-post-template{box-sizing:
   }
 </style>
 
+
+<!-- Google Fonts: Unbounded (weight 900) & Inter (weight 300, 500) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Unbounded:wght@900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Unbounded:wght@900&display=swap">
+<!-- Hero Section Stylesheet (Scoped to .mj-hero, loaded after all existing stylesheets) -->
+<link rel="stylesheet" href="assets/hero/hero.css">
 </head>
 
 <body itemtype='https://schema.org/WebPage' itemscope='itemscope' class="home wp-singular page-template page-template-elementor_header_footer page page-id-11 wp-embed-responsive wp-theme-astra surerank-1.10.2 angie-default ast-desktop ast-page-builder-template ast-no-sidebar astra-4.14.0 ast-single-post ast-inherit-site-logo-transparent ast-theme-transparent-header ast-hfb-header elementor-default elementor-template-full-width elementor-kit-669 elementor-page elementor-page-11">
@@ -5631,46 +5374,68 @@ class="hfeed site" id="page">
 			<div id="content" class="site-content">
 		<div class="ast-container">
 				<div data-elementor-type="wp-page" data-elementor-id="11" class="elementor elementor-11">
-				<div class="elementor-element elementor-element-420fa8b e-flex e-con-boxed e-con e-parent" data-id="420fa8b" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-					<div class="e-con-inner hero-inner-container">
-				
-				<!-- Hero Title -->
-				<div class="elementor-element elementor-element-5e7f955 elementor-widget elementor-widget-heading hero-title-widget" data-id="5e7f955" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
-				<div class="elementor-widget-container">
-					<h1 class="elementor-heading-title elementor-size-default">Hi, I'm Martin</h1>
-				</div>
-				</div>
+				<!-- ==========================================================================
+     HERO SECTION (Scoped to .mj-hero, pure HTML & CSS)
+     ========================================================================== -->
+<section class="mj-hero" aria-label="Introduction">
+  <div class="mj-hero-stage">
+    <!-- Film Grain Overlay -->
+    <svg class="mj-hero-grain" aria-hidden="true" width="100%" height="100%">
+      <filter id="mj-hero-grain-filter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
+        <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.04 0" />
+      </filter>
+      <rect width="100%" height="100%" filter="url(#mj-hero-grain-filter)" />
+    </svg>
 
-				<!-- Hero Center Stage: Liquid Glass Pills + Martin Portrait -->
-				<div class="hero-stage-container">
-					<!-- Left 3 Liquid Glass Cards -->
-					<div class="glass-pills-col glass-pills-left">
-						<div class="liquid-glass-card"><span>Content Creation</span></div>
-						<div class="liquid-glass-card"><span>Analytics</span></div>
-						<div class="liquid-glass-card"><span>Branding</span></div>
-					</div>
+    <!-- Bottom Vignette -->
+    <div class="mj-hero-vignette" aria-hidden="true"></div>
 
-					<!-- Center Martin Portrait -->
-					<div class="hero-portrait-stage">
-						<img fetchpriority="high" decoding="async" width="768" height="798" src="./wp-content/uploads/2026/10/Glossy-CGI-Portrait-with-Cap-and-Shades-768x798.png" class="hero-portrait-img" alt="Martin J Mathew - Associate Creative Director" title="Martin J Mathew" />
-					</div>
+    <!-- 1. Headline: Real h1 on two lines -->
+    <h1 class="mj-hero-headline">
+      <span class="mj-hero-line mj-hero-line-1">HI, I'M</span>
+      <span class="mj-hero-line mj-hero-line-2">MARTINN</span>
+    </h1>
 
-					<!-- Right 3 Liquid Glass Cards -->
-					<div class="glass-pills-col glass-pills-right">
-						<div class="liquid-glass-card"><span>Copywriting</span></div>
-						<div class="liquid-glass-card"><span>Designing</span></div>
-						<div class="liquid-glass-card"><span>Digital Marketing</span></div>
-					</div>
-				</div>
+    <!-- 2. Head image / Placeholder -->
+    <!-- Placeholder until assets/hero/martin-head.png is added by user -->
+    <div class="mj-hero-head-wrap">
+      <img class="mj-hero-head-img" 
+           src="assets/hero/martin-head.png" 
+           alt="Illustration of Martinn wearing a tan cap and sunglasses" 
+           width="769" 
+           height="937" 
+           fetchpriority="high" 
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="mj-hero-head-placeholder" aria-hidden="true"></div>
+    </div>
 
-				<!-- Centered Role and Statement -->
-				<div class="hero-bottom-info">
-					<div class="hero-role-badge">Associate Creative Director based in Bangalore</div>
-					<p class="hero-statement-text">Creative strategy, art direction, storytelling and execution across brands, campaigns, content, creators, motion and emerging creative technology.</p>
-				</div>
+    <!-- 3. Five glass label chips -->
+    <ul class="mj-hero-chips" aria-label="Specializations" aria-hidden="false">
+      <li class="mj-hero-chip mj-hero-chip-content">
+        <span class="mj-hero-chip-text">Content Creation</span>
+      </li>
+      <li class="mj-hero-chip mj-hero-chip-copywriting">
+        <span class="mj-hero-chip-text">Copywriting</span>
+      </li>
+      <li class="mj-hero-chip mj-hero-chip-branding">
+        <span class="mj-hero-chip-text">Branding</span>
+      </li>
+      <li class="mj-hero-chip mj-hero-chip-advertising">
+        <span class="mj-hero-chip-text">Advertising</span>
+      </li>
+      <li class="mj-hero-chip mj-hero-chip-designing">
+        <span class="mj-hero-chip-text">Creative designing</span>
+      </li>
+    </ul>
 
-					</div>
-				</div>
+    <!-- 4. Subtitle (bottom-left) -->
+    <div class="mj-hero-subtitle">
+      <span>Associate Creative Director</span>
+      <span>based in Bengaluru</span>
+    </div>
+  </div>
+</section>
 		<div class="elementor-element elementor-element-fac29e8 e-flex e-con-boxed e-con e-parent" data-id="fac29e8" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="e-con-inner">
 				<div class="elementor-element elementor-element-2157a0e elementor-widget elementor-widget-heading" data-id="2157a0e" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">

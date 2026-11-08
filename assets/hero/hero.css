@@ -1,0 +1,508 @@
+/* ==========================================================================
+   MJ HERO SECTION STYLESHEET
+   Strictly scoped under .mj-hero to isolate from Elementor and Astra
+   Stage Aspect Ratio: 2458 / 1512 (~1.6257)
+   Type and spatial units: cqw (container query width units of the stage)
+   ========================================================================== */
+
+/* Universal reset within .mj-hero */
+.mj-hero,
+.mj-hero *,
+.mj-hero *::before,
+.mj-hero *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Outer Section: Full width near-black #0b0b0b */
+.mj-hero {
+  position: relative;
+  width: 100%;
+  background-color: #0b0b0b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: #ffffff;
+  z-index: 10;
+}
+
+/* The Stage: 2458 / 1512 aspect ratio, container-type inline-size */
+.mj-hero .mj-hero-stage {
+  position: relative;
+  width: min(100vw, calc(100svh * 1.6257));
+  aspect-ratio: 2458 / 1512;
+  container-type: inline-size;
+  background-color: #0b0b0b;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* Film grain overlay (inline SVG feTurbulence, ~4% opacity) */
+.mj-hero .mj-hero-grain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Soft vignette fading to pure black at bottom 15% of stage */
+.mj-hero .mj-hero-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 11, 11, 0) 0%,
+    rgba(11, 11, 11, 0) 70%,
+    rgba(11, 11, 11, 0.45) 85%,
+    #0b0b0b 100%
+  );
+}
+
+/* ==========================================================================
+   1. HEADLINE
+   Two lines, centered horizontally, font "Unbounded" 900
+   ========================================================================== */
+.mj-hero .mj-hero-headline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  font-family: 'Unbounded', system-ui, -apple-system, sans-serif;
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+}
+
+.mj-hero .mj-hero-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  text-align: center;
+  font-size: 12.4cqw;
+  will-change: transform, opacity;
+  animation: mjHeadlineFadeUp 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Line 1: "HI, I'M" - Spans about 37.5%, cap top at 7.6% of stage height */
+.mj-hero .mj-hero-line-1 {
+  top: 7.6%;
+  width: 37.5%;
+  animation-delay: 0ms;
+}
+
+/* Line 2: "MARTINN" - Spans about 70%, cap top at 26.5% of stage height */
+.mj-hero .mj-hero-line-2 {
+  top: 26.5%;
+  width: 70%;
+  animation-delay: 120ms;
+}
+
+/* ==========================================================================
+   2. HEAD IMAGE / PLACEHOLDER
+   In front of headline (z-index: 5), covering part of "R" and "T"
+   left: 37.4%, width: 31.3%, top: 33%, bottom: 95% (height: 62%)
+   ========================================================================== */
+.mj-hero .mj-hero-head-wrap {
+  position: absolute;
+  left: 37.4%;
+  width: 31.3%;
+  top: 33%;
+  height: 62%;
+  bottom: 5%;
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  will-change: transform, opacity;
+  animation: mjHeadScaleIn 800ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
+}
+
+.mj-hero .mj-hero-head-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.55));
+  display: block;
+}
+
+.mj-hero .mj-hero-head-placeholder {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: #2a2a2a;
+  border-radius: 46% 46% 40% 40% / 55% 55% 45% 45%;
+  box-shadow: 0 30px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* ==========================================================================
+   3. FIVE GLASS LABEL CHIPS
+   List of decorative spans inside <ul> with aria-hidden="false"
+   Corner radius: 0.9cqw, height: 4.3cqw
+   Dark glass fill, 2px metallic border, inset highlight, text Inter 300
+   ========================================================================== */
+.mj-hero .mj-hero-chips {
+  list-style: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.mj-hero .mj-hero-chip {
+  position: absolute;
+  height: 4.3cqw;
+  border-radius: 0.9cqw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  pointer-events: auto;
+  user-select: none;
+  cursor: default;
+
+  /* Glass Styling */
+  border: 2px solid transparent;
+  background: 
+    linear-gradient(145deg, #1d1d1d, #0c0c0c) padding-box,
+    linear-gradient(145deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 100%) border-box;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 10px 24px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* Animation */
+  will-change: transform, opacity;
+  animation: 
+    mjChipFadeIn 600ms cubic-bezier(0.16, 1, 0.3, 1) both,
+    mjChipFloat 7s ease-in-out infinite alternate;
+}
+
+.mj-hero .mj-hero-chip-text {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 300;
+  font-size: 2.3cqw;
+  letter-spacing: 0.01em;
+  background: linear-gradient(180deg, #ffffff 0%, #9a9a9a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Individual Chip Coordinates & Staggered Animations */
+/* 1. "Content Creation": left 10.5%, top 48.6%, width 21.4% */
+.mj-hero .mj-hero-chip-content {
+  left: 10.5%;
+  top: 48.6%;
+  width: 21.4%;
+  animation-delay: 400ms, 0s;
+}
+
+/* 2. "Copywriting": left 70.3%, top 48.3%, width 15.4% */
+.mj-hero .mj-hero-chip-copywriting {
+  left: 70.3%;
+  top: 48.3%;
+  width: 15.4%;
+  animation-delay: 480ms, 1.4s;
+}
+
+/* 3. "Branding": left 4.8%, top 63.2%, width 16.7% */
+.mj-hero .mj-hero-chip-branding {
+  left: 4.8%;
+  top: 63.2%;
+  width: 16.7%;
+  animation-delay: 560ms, 2.6s;
+}
+
+/* 4. "Advertising": left 80.7%, top 61%, width 14.5% */
+.mj-hero .mj-hero-chip-advertising {
+  left: 80.7%;
+  top: 61%;
+  width: 14.5%;
+  animation-delay: 640ms, 0.8s;
+}
+
+/* 5. "Creative designing": left 67.1%, top 76.6%, width 24% */
+.mj-hero .mj-hero-chip-designing {
+  left: 67.1%;
+  top: 76.6%;
+  width: 24%;
+  animation-delay: 720ms, 2.0s;
+}
+
+/* ==========================================================================
+   4. SUBTITLE (bottom-left)
+   left 7.2%, top 77%
+   Two lines, left-aligned, white, Inter 500, size 2.2cqw, line-height 1.15
+   ========================================================================== */
+.mj-hero .mj-hero-subtitle {
+  position: absolute;
+  left: 7.2%;
+  top: 77%;
+  z-index: 6;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  font-size: 2.2cqw;
+  line-height: 1.15;
+  color: #ffffff;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  animation: mjSubtitleFade 700ms cubic-bezier(0.16, 1, 0.3, 1) 400ms both;
+}
+
+/* ==========================================================================
+   5. KEYFRAME ANIMATIONS
+   ========================================================================== */
+@keyframes mjHeadlineFadeUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 30px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes mjHeadScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes mjChipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mjSubtitleFade {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slow floating idle motion for chips (translateY between 0 and -6px) */
+@keyframes mjChipFloat {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-6px);
+  }
+}
+
+/* ==========================================================================
+   6. REDUCED MOTION SUPPORT
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .mj-hero *,
+  .mj-hero *::before,
+  .mj-hero *::after {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+  }
+  .mj-hero .mj-hero-line {
+    transform: translateX(-50%) !important;
+  }
+  .mj-hero .mj-hero-head-wrap,
+  .mj-hero .mj-hero-chip,
+  .mj-hero .mj-hero-subtitle {
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   7. MOBILE RESPONSIVE (under 768px)
+   Drop absolute layout, stack centered on #0b0b0b with 20px padding
+   ========================================================================== */
+@keyframes mjHeadlineFadeUpMobile {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 767px) {
+  .mj-hero {
+    padding: 32px 20px 48px;
+    background-color: #0b0b0b;
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mj-hero .mj-hero-stage {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: auto;
+    height: auto;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .mj-hero .mj-hero-vignette {
+    display: none;
+  }
+
+  /* 1. Headline on two lines, "MARTINN" fills about 90% width */
+  .mj-hero .mj-hero-headline {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    z-index: 1;
+    margin: 0 0 0 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .mj-hero .mj-hero-line {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(36px, 14vw, 58px);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+    animation: mjHeadlineFadeUpMobile 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .mj-hero .mj-hero-line-1 {
+    animation-delay: 0ms;
+  }
+
+  .mj-hero .mj-hero-line-2 {
+    animation-delay: 120ms;
+    margin-top: 4px;
+  }
+
+  /* 2. Head image, width 70%, overlapping bottom half of line 2 (margin-top: -12vw) */
+  .mj-hero .mj-hero-head-wrap {
+    position: relative;
+    left: auto;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    width: 70%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 769 / 937;
+    margin-top: -12vw;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .mj-hero .mj-hero-head-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .mj-hero .mj-hero-head-placeholder {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* 3. Five chips in a centered, wrapping row (gap 10px), padding 12px 20px, text 4vw */
+  .mj-hero .mj-hero-chips {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 440px;
+    margin: 24px auto 0;
+    padding: 0;
+    z-index: 4;
+    list-style: none;
+    box-sizing: border-box;
+  }
+
+  .mj-hero .mj-hero-chip {
+    position: static;
+    left: auto;
+    top: auto;
+    width: auto;
+    height: auto;
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    animation: mjChipFadeIn 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .mj-hero .mj-hero-chip-text {
+    font-size: clamp(13px, 3.8vw, 16px);
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  /* 4. Subtitle centered, 4.5vw */
+  .mj-hero .mj-hero-subtitle {
+    position: static;
+    left: auto;
+    top: auto;
+    width: 100%;
+    margin: 26px auto 0;
+    text-align: center;
+    align-items: center;
+    font-size: clamp(14px, 4.2vw, 18px);
+    line-height: 1.35;
+    z-index: 4;
+    box-sizing: border-box;
+  }
+}
