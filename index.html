@@ -21,12 +21,200 @@
     font-family: "Climate Crisis", sans-serif !important;
     font-display: block;
   }
-  /* Prevent invisible text while font loads */
   @font-face {
     font-family: "Climate Crisis";
     font-display: block;
   }
-  /* Responsive Hero and Mobile Layout */
+
+  /* Full-viewport Hero Layout & 6 Liquid Glass Badges */
+  .elementor-11 .elementor-element.elementor-element-420fa8b {
+    height: calc(100vh - 75px) !important;
+    min-height: 600px !important;
+    max-height: 1050px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 16px 24px 20px !important;
+    box-sizing: border-box !important;
+    background-image: url("./wp-content/uploads/2026/10/sl_0210121_40570_43-scaled.jpg") !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+  
+  .hero-inner-container {
+    width: 100% !important;
+    max-width: 1400px !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    position: relative !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .hero-title-widget {
+    width: 100% !important;
+    text-align: center !important;
+    z-index: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .hero-title-widget .elementor-widget-container {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .elementor-11 .elementor-element.elementor-element-5e7f955 .elementor-heading-title,
+  h1.elementor-heading-title {
+    font-family: "Climate Crisis", sans-serif !important;
+    font-size: clamp(54px, 6.6vw, 105px) !important;
+    line-height: 0.95 !important;
+    letter-spacing: 1px !important;
+    color: #ffffff !important;
+    text-align: center !important;
+    text-transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-shadow: 0 4px 25px rgba(0, 0, 0, 0.7) !important;
+    word-break: normal !important;
+  }
+
+  .hero-stage-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    position: relative !important;
+    z-index: 2 !important;
+    flex: 1 !important;
+    min-height: 0 !important;
+    margin: 4px 0 !important;
+  }
+
+  .glass-pills-col {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    z-index: 3 !important;
+    flex: 1 !important;
+    max-width: 250px !important;
+  }
+  .glass-pills-left {
+    align-items: flex-end !important;
+  }
+  .glass-pills-right {
+    align-items: flex-start !important;
+  }
+
+  .liquid-glass-card {
+    position: relative !important;
+    padding: 12px 28px !important;
+    border-radius: 9999px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(0, 0, 0, 0.5) 100%), rgba(14, 14, 14, 0.65) !important;
+    backdrop-filter: blur(16px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+    box-shadow: 
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.75),
+      inset 0 -2px 4px 0 rgba(0, 0, 0, 0.7),
+      0 10px 25px -4px rgba(0, 0, 0, 0.6),
+      0 0 12px 0 rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+    font-family: 'Figtree', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.4px !important;
+    white-space: nowrap !important;
+    cursor: default !important;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+    user-select: none !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+  }
+  .liquid-glass-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 1px !important;
+    left: 15% !important;
+    right: 15% !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent) !important;
+    border-radius: 9999px !important;
+    pointer-events: none !important;
+  }
+  .liquid-glass-card:hover {
+    transform: translateY(-3px) scale(1.03) !important;
+    border-color: rgba(255, 255, 255, 0.45) !important;
+    box-shadow: 
+      inset 0 1px 2px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -2px 4px 0 rgba(0, 0, 0, 0.8),
+      0 14px 32px -4px rgba(0, 0, 0, 0.8),
+      0 0 16px 0 rgba(255, 255, 255, 0.15) !important;
+  }
+
+  .hero-portrait-stage {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+    position: relative !important;
+    z-index: 2 !important;
+    height: 100% !important;
+    max-height: 48vh !important;
+    padding: 0 20px !important;
+  }
+  .hero-portrait-img {
+    height: 100% !important;
+    max-height: 46vh !important;
+    width: auto !important;
+    object-fit: contain !important;
+    object-position: bottom center !important;
+    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.85)) !important;
+    display: block !important;
+  }
+
+  .hero-bottom-info {
+    z-index: 3 !important;
+    text-align: center !important;
+    max-width: 840px !important;
+    margin: 0 auto !important;
+    padding: 0 16px !important;
+  }
+  .hero-role-badge {
+    font-family: 'Figtree', sans-serif !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2.2px !important;
+    color: #a3e635 !important;
+    margin-bottom: 6px !important;
+    text-align: center !important;
+  }
+  .hero-statement-text {
+    font-family: 'Figtree', sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    color: rgba(255, 255, 255, 0.88) !important;
+    font-weight: 400 !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    max-width: 780px !important;
+  }
+
+  /* Tablets */
+  @media (max-width: 1024px) {
+    .glass-pills-col { gap: 14px !important; max-width: 200px !important; }
+    .liquid-glass-card { padding: 10px 20px !important; font-size: 13.5px !important; }
+    .elementor-11 .elementor-element.elementor-element-5e7f955 .elementor-heading-title,
+    h1.elementor-heading-title {
+      font-size: clamp(48px, 6.5vw, 84px) !important;
+    }
+  }
+
+  /* Mobile */
   @media (max-width: 767px) {
     html, body {
       overflow-x: hidden !important;
@@ -34,65 +222,60 @@
       width: 100% !important;
     }
     .elementor-11 .elementor-element.elementor-element-420fa8b {
-      min-height: 100svh !important;
-      min-height: 100vh;
-      padding-top: 80px !important;
-      padding-bottom: 0 !important;
-      padding-left: 20px !important;
-      padding-right: 20px !important;
-      overflow: hidden !important;
-      box-sizing: border-box !important;
-    }
-    .elementor-11 .elementor-element.elementor-element-5e7f955 {
-      width: 100% !important;
-      max-width: 100% !important;
-      text-align: center !important;
-    }
-    .elementor-11 .elementor-element.elementor-element-5e7f955 > .elementor-widget-container {
-      padding: 0 0 20px 0 !important;
-      margin: 0 !important;
-      max-width: 100% !important;
+      height: 100svh !important;
+      min-height: 560px !important;
+      max-height: none !important;
+      padding: 70px 16px 16px !important;
+      justify-content: space-between !important;
     }
     .elementor-11 .elementor-element.elementor-element-5e7f955 .elementor-heading-title,
     h1.elementor-heading-title {
-      font-size: clamp(38px, 12.5vw, 62px) !important;
-      line-height: 1.05 !important;
-      letter-spacing: normal !important;
-      text-align: center !important;
-      word-break: normal !important;
-      overflow-wrap: break-word !important;
-      max-width: 100% !important;
-      box-sizing: border-box !important;
+      font-size: clamp(34px, 10vw, 48px) !important;
+      line-height: 1.02 !important;
     }
-    .elementor-11 .elementor-element.elementor-element-50e93b4 {
-      width: 100% !important;
-      bottom: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      display: flex !important;
+    .hero-stage-container {
+      flex-direction: column !important;
       justify-content: center !important;
-      align-items: flex-end !important;
-      pointer-events: none;
+      gap: 10px !important;
+      margin: 2px 0 !important;
     }
-    .elementor-11 .elementor-element.elementor-element-69c69f0 img {
-      width: auto !important;
-      max-width: 90% !important;
-      height: clamp(280px, 46vh, 460px) !important;
-      object-fit: contain !important;
-      object-position: bottom center !important;
-      margin: 0 auto !important;
-      display: block !important;
+    .hero-portrait-stage {
+      max-height: 34vh !important;
+      order: 1 !important;
+      padding: 0 !important;
+    }
+    .hero-portrait-img {
+      max-height: 32vh !important;
+    }
+    .glass-pills-col {
+      flex-direction: row !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 8px !important;
+      max-width: 100% !important;
+      order: 2 !important;
+    }
+    .glass-pills-left, .glass-pills-right {
+      align-items: center !important;
+    }
+    .liquid-glass-card {
+      padding: 6px 14px !important;
+      font-size: 11.5px !important;
+    }
+    .hero-role-badge {
+      font-size: 12px !important;
+      letter-spacing: 1.5px !important;
+      margin-bottom: 4px !important;
+    }
+    .hero-statement-text {
+      font-size: 11.5px !important;
+      line-height: 1.35 !important;
+      max-width: 100% !important;
     }
     .elementor-11 .elementor-element.elementor-element-2157a0e .elementor-heading-title {
       font-size: clamp(32px, 8vw, 44px) !important;
       line-height: 1.15 !important;
-    }
-  }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .elementor-11 .elementor-element.elementor-element-5e7f955 .elementor-heading-title {
-      font-size: clamp(80px, 12vw, 120px) !important;
-      line-height: 1.05 !important;
-      letter-spacing: 1px !important;
     }
   }
 </style>
@@ -5449,24 +5632,43 @@ class="hfeed site" id="page">
 		<div class="ast-container">
 				<div data-elementor-type="wp-page" data-elementor-id="11" class="elementor elementor-11">
 				<div class="elementor-element elementor-element-420fa8b e-flex e-con-boxed e-con e-parent" data-id="420fa8b" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-					<div class="e-con-inner">
-				<div class="elementor-element elementor-element-5e7f955 elementor-widget elementor-widget-heading" data-id="5e7f955" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<div class="e-con-inner hero-inner-container">
+				
+				<!-- Hero Title -->
+				<div class="elementor-element elementor-element-5e7f955 elementor-widget elementor-widget-heading hero-title-widget" data-id="5e7f955" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-					<h1 class="elementor-heading-title elementor-size-default">Hi, 
-I'm Martin</h1>				</div>
-				</div>
-		<div class="elementor-element elementor-element-c2bab65 e-con-full e-flex e-con e-child" data-id="c2bab65" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-488e7fa elementor-hidden-mobile elementor-widget elementor-widget-text-editor" data-id="488e7fa" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
-				<div class="elementor-widget-container">
-									<p>Creative strategy, art direction, storytelling and execution across brands, campaigns, content, creators, motion and emerging creative technology.</p>								</div>
+					<h1 class="elementor-heading-title elementor-size-default">Hi, I'm Martin</h1>
 				</div>
 				</div>
-		<div class="elementor-element elementor-element-50e93b4 e-con-full e-flex e-con e-child" data-id="50e93b4" data-element_type="container" data-e-type="container" data-settings="{&quot;position&quot;:&quot;absolute&quot;}">
-				<div class="elementor-element elementor-element-69c69f0 elementor-widget elementor-widget-image" data-id="69c69f0" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
-				<div class="elementor-widget-container">
-															<img fetchpriority="high" decoding="async" width="768" height="798" src="./wp-content/uploads/2026/10/Glossy-CGI-Portrait-with-Cap-and-Shades-768x798.png" class="attachment-medium_large size-medium_large wp-image-671" alt="glossy cgi portrait with cap and shades" srcset="./wp-content/uploads/2026/10/Glossy-CGI-Portrait-with-Cap-and-Shades-768x798.png 768w, ./wp-content/uploads/2026/10/Glossy-CGI-Portrait-with-Cap-and-Shades-289x300.png 289w, ./wp-content/uploads/2026/10/Glossy-CGI-Portrait-with-Cap-and-Shades-986x1024.png 986w, ./wp-content/uploads/2026/10/Glossy-CGI-Portrait-with-Cap-and-Shades.png 1230w" sizes="(max-width: 768px) 100vw, 768px"  title="Home" />															</div>
+
+				<!-- Hero Center Stage: Liquid Glass Pills + Martin Portrait -->
+				<div class="hero-stage-container">
+					<!-- Left 3 Liquid Glass Cards -->
+					<div class="glass-pills-col glass-pills-left">
+						<div class="liquid-glass-card"><span>Content Creation</span></div>
+						<div class="liquid-glass-card"><span>Analytics</span></div>
+						<div class="liquid-glass-card"><span>Branding</span></div>
+					</div>
+
+					<!-- Center Martin Portrait -->
+					<div class="hero-portrait-stage">
+						<img fetchpriority="high" decoding="async" width="768" height="798" src="./wp-content/uploads/2026/10/Glossy-CGI-Portrait-with-Cap-and-Shades-768x798.png" class="hero-portrait-img" alt="Martin J Mathew - Associate Creative Director" title="Martin J Mathew" />
+					</div>
+
+					<!-- Right 3 Liquid Glass Cards -->
+					<div class="glass-pills-col glass-pills-right">
+						<div class="liquid-glass-card"><span>Copywriting</span></div>
+						<div class="liquid-glass-card"><span>Designing</span></div>
+						<div class="liquid-glass-card"><span>Digital Marketing</span></div>
+					</div>
 				</div>
+
+				<!-- Centered Role and Statement -->
+				<div class="hero-bottom-info">
+					<div class="hero-role-badge">Associate Creative Director based in Bangalore</div>
+					<p class="hero-statement-text">Creative strategy, art direction, storytelling and execution across brands, campaigns, content, creators, motion and emerging creative technology.</p>
 				</div>
+
 					</div>
 				</div>
 		<div class="elementor-element elementor-element-fac29e8 e-flex e-con-boxed e-con e-parent" data-id="fac29e8" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
