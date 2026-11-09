@@ -5795,6 +5795,157 @@ div.wp-block-spectra-post-template,ul.wp-block-spectra-post-template{box-sizing:
 .case-next a:hover{background:#82ff1f;color:#000;border-color:#82ff1f}
 @media(max-width:768px){.case-back,.case-next{padding-left:20px;padding-right:20px}}
 </style>
+
+<style id="lightbox-styles">
+  /* ===== LIGHTBOX OVERLAY ===== */
+  #creative-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  #creative-lightbox.lb-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.94);
+    cursor: pointer;
+  }
+  /* ===== PANEL ===== */
+  .lightbox-panel {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 92vw;
+    max-height: 92vh;
+    padding: 0;
+    animation: lb-pop 0.22s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes lb-pop {
+    from { transform: scale(0.93); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+  }
+  /* ===== MEDIA WRAP ===== */
+  .lightbox-media-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0a0a0a;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+  }
+  .lightbox-video {
+    display: none;
+    max-height: 86vh;
+    max-width: 80vw;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+    background: #000;
+    border-radius: 10px;
+  }
+  .lightbox-image {
+    display: none;
+    max-height: 86vh;
+    max-width: 85vw;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+  .lightbox-video.lb-active,
+  .lightbox-image.lb-active {
+    display: block;
+  }
+  /* ===== CLOSE BUTTON ===== */
+  .lightbox-close {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    z-index: 10001;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #f8f8f8;
+    font-size: 26px;
+    line-height: 1;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, border-color 0.18s;
+    backdrop-filter: blur(6px);
+  }
+  .lightbox-close:hover {
+    background: #82ff1f;
+    color: #111;
+    border-color: #82ff1f;
+  }
+  /* ===== PREV / NEXT ===== */
+  .lightbox-prev,
+  .lightbox-next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10001;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.13);
+    color: #f8f8f8;
+    font-size: 30px;
+    width: 48px;
+    height: 64px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, border-color 0.18s;
+    backdrop-filter: blur(6px);
+    user-select: none;
+  }
+  .lightbox-prev { left: 16px; }
+  .lightbox-next { right: 16px; }
+  .lightbox-prev:hover,
+  .lightbox-next:hover {
+    background: #82ff1f;
+    color: #111;
+    border-color: #82ff1f;
+  }
+  /* ===== COUNTER ===== */
+  .lightbox-counter {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10001;
+    font-family: 'Figtree', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: rgba(248,248,248,0.45);
+    pointer-events: none;
+  }
+  /* ===== HOVER CURSOR ON CARDS ===== */
+  .work-thumb-card {
+    cursor: pointer;
+  }
+  .work-thumb-card:hover img {
+    filter: brightness(1.08);
+  }
+  .subcategory-block, .subcat-title {
+    scroll-margin-top: 100px;
+  }
+</style>
 </head>
 
 <body itemtype='https://schema.org/WebPage' itemscope='itemscope' class="wp-singular page-template-default page page-id-16 wp-embed-responsive wp-theme-astra surerank-1.10.2 angie-default ast-desktop ast-page-builder-template ast-no-sidebar astra-4.14.0 ast-single-post ast-inherit-site-logo-transparent ast-theme-transparent-header ast-hfb-header elementor-default elementor-kit-669 elementor-page elementor-page-16">
@@ -5934,49 +6085,164 @@ class="hfeed site" id="page">
       <!-- SUBCATEGORIES -->
       <div class="subcategories-container">
 
-        <!-- CAMPAIGN IDENTITY -->
+        <!-- CAMPAIGN IDENTITY & BRANDING -->
         <section class="subcategory-block">
           <div class="subcat-header">
-            <h3 id="branding" class="subcat-title">CAMPAIGN IDENTITY</h3>
-            <span class="subcat-scope">Cyberpunk Visual Direction &bull; Logo Design &bull; Typography &bull; Color System</span>
+            <div>
+              <h3 id="branding" class="subcat-title">CAMPAIGN IDENTITY &amp; BRANDING</h3>
+            </div>
+            <span class="subcat-scope">Logo Design &bull; Cyberpunk Typography &bull; Color System &bull; Guidelines &bull; 3D Stage Visuals</span>
           </div>
           <div class="curated-grid-2">
+            <!-- 1. Thematic Pirate Mark -->
             <div class="work-thumb-card aspect-wide">
-              <img src="../../wp-content/uploads/2026/10/24cf4f251348263.6a356dfb91e14-768x723.jpg" alt="Emperio cyberpunk identity system" loading="lazy">
+              <img src="../../assets/images/emperio/logo-1.jpg" alt="Emperio 2023 Pirate Thematic Logo System" loading="lazy">
               <div class="work-thumb-info">
-                <span class="thumb-label">BRAND SYSTEM</span>
-                <span class="thumb-title">Cyberpunk Typography &amp; Neomorphic Assets</span>
-                <span class="thumb-meta">Monochrome high-contrast typography system with vibrant neon acid accents</span>
+                <span class="thumb-label">LOGO &amp; GEOMETRY</span>
+                <span class="thumb-title">One Piece Pirate Theme Main Mark</span>
+                <span class="thumb-meta">Thematic fest brand mark pairing Jolly Roger skull geometry with navigational anchor</span>
               </div>
             </div>
+
+            <!-- 2. Typography Construction -->
             <div class="work-thumb-card aspect-wide">
-              <img src="../../wp-content/uploads/2026/10/24cf4f251348263.6a356dfb91e14-1-768x556.jpg" alt="Emperio color palette and visual tokens" loading="lazy">
+              <img src="../../assets/images/emperio/1.jpg" alt="Cyberpunk Typography and Custom Lettering" loading="lazy">
               <div class="work-thumb-info">
-                <span class="thumb-label">VISUAL LANGUAGE</span>
-                <span class="thumb-title">Festival Identity Architecture</span>
-                <span class="thumb-meta">Cross-channel graphic standards for digital screens, stages, and badges</span>
+                <span class="thumb-label">TYPOGRAPHY SYSTEM</span>
+                <span class="thumb-title">Cyberpunk 2077 Concept to Fest Wordmark</span>
+                <span class="thumb-meta">Bespoke angular type construction and heavy display typography</span>
+              </div>
+            </div>
+
+            <!-- 3. Color Architecture -->
+            <div class="work-thumb-card aspect-wide">
+              <img src="../../assets/images/emperio/3.jpg" alt="Emperio Color System and Graphic Tokens" loading="lazy">
+              <div class="work-thumb-info">
+                <span class="thumb-label">COLOR ARCHITECTURE</span>
+                <span class="thumb-title">Cyberpunk Visual Language &amp; Tokens</span>
+                <span class="thumb-meta">Acid yellows, cyber blues, and high-contrast dark palette</span>
+              </div>
+            </div>
+
+            <!-- 4. Official Guidelines -->
+            <div class="work-thumb-card aspect-tall">
+              <img src="../../assets/images/emperio/guidelines.jpg" alt="Official Emperio 2023 Fest Guidelines" loading="lazy">
+              <div class="work-thumb-info">
+                <span class="thumb-label">BRAND GOVERNANCE</span>
+                <span class="thumb-title">Official Fest Guidelines &amp; Rulebook</span>
+                <span class="thumb-meta">Design rules, event protocols, and brand standards</span>
+              </div>
+            </div>
+
+            <!-- 5. 3D Stage Environment -->
+            <div class="work-thumb-card aspect-wide">
+              <img src="../../assets/images/emperio/003.jpg" alt="Stage Concept and Cyberpunk Cityscape Key Visual" loading="lazy">
+              <div class="work-thumb-info">
+                <span class="thumb-label">ENVIRONMENT &amp; STAGE</span>
+                <span class="thumb-title">3D Stage Environment &amp; Key Visual</span>
+                <span class="thumb-meta">Volumetric futuristic cityscape backdrop for main stage concerts</span>
+              </div>
+            </div>
+
+            <!-- 6. Graphic Architecture -->
+            <div class="work-thumb-card aspect-wide">
+              <img src="../../assets/images/emperio/004.jpg" alt="Event Visual Identity Assets" loading="lazy">
+              <div class="work-thumb-info">
+                <span class="thumb-label">VISUAL ASSETS</span>
+                <span class="thumb-title">Cyberpunk Abstract Graphic Architecture</span>
+                <span class="thumb-meta">Modular graphic textures and digital screens</span>
+              </div>
+            </div>
+
+            <!-- 7. Merchandise & Collateral -->
+            <div class="work-thumb-card aspect-wide">
+              <img src="../../assets/images/emperio/009.jpg" alt="Brand Merchandise and Collateral" loading="lazy">
+              <div class="work-thumb-info">
+                <span class="thumb-label">MERCHANDISE</span>
+                <span class="thumb-title">Fest Collateral &amp; Merch Suite</span>
+                <span class="thumb-meta">Branded apparel, lanyard tags, and event passes</span>
+              </div>
+            </div>
+
+            <!-- 8. Master Brand System -->
+            <div class="work-thumb-card aspect-wide">
+              <img src="../../assets/images/emperio/untitled-1.jpg" alt="Master Identity Overview Sheet" loading="lazy">
+              <div class="work-thumb-info">
+                <span class="thumb-label">IDENTITY OVERVIEW</span>
+                <span class="thumb-title">Comprehensive Brand System Sheet</span>
+                <span class="thumb-meta">Integrated visual overview of all fest typography and design components</span>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- SOCIAL CAMPAIGN & EVENT COMMUNICATION -->
+        <!-- MARKETING CREATIVES, SOCIAL CAMPAIGN & EVENT DESIGN -->
         <section class="subcategory-block">
           <div class="subcat-header">
-            <h3 id="marketing-creatives" class="subcat-title">SOCIAL CAMPAIGN &amp; EVENT DESIGN</h3>
-            <span class="subcat-scope">Instagram Stories &bull; Lineup Drops &bull; Posters &bull; Tickets &bull; Wristbands</span>
+            <div>
+              <h3 id="marketing-creatives" class="subcat-title">MARKETING CREATIVES &amp; EVENT DESIGN</h3>
+            </div>
+            <span class="subcat-scope">Official Key Art &bull; Concert Drops &bull; Instagram Stories &bull; Motion Teaser &bull; Ticketing &amp; VIP Passes</span>
           </div>
-          <div class="curated-grid-3">
-            <div class="work-thumb-card">
-              <img src="../../wp-content/uploads/2026/10/24cf4f251348263.6a356dfb91e14-2.jpg" alt="Event posters and signage" loading="lazy">
+
+          <h4 style="font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #82ff1f; margin: 0 0 16px;">CAMPAIGN POSTERS &amp; SOCIAL DROPS</h4>
+          <div class="curated-grid-3" style="margin-bottom: 32px;">
+            <!-- 9. Official Key Art Poster -->
+            <div class="work-thumb-card aspect-tall">
+              <img src="../../assets/images/emperio/001.png" alt="Official Emperio 2023 Key Art Poster" loading="lazy">
               <div class="work-thumb-info">
-                <span class="thumb-label">EVENT POSTERS</span>
-                <span class="thumb-title">Phase 1 Lineup Teaser</span>
-                <span class="thumb-meta">High-impact print &amp; outdoor poster campaign</span>
+                <span class="thumb-label">KEY ART POSTER</span>
+                <span class="thumb-title">Official Emperio 2023 Flagship Poster</span>
+                <span class="thumb-meta">Master festival poster artwork showcasing key visual identity</span>
               </div>
             </div>
-            <div class="work-thumb-card">
-              <video autoplay loop muted playsinline style="width:100%; aspect-ratio:4/3; object-fit:cover;">
+
+            <!-- 10. Phase 1 Lineup Teaser -->
+            <div class="work-thumb-card aspect-tall">
+              <img src="../../assets/images/emperio/00.jpg" alt="Phase 1 Lineup Teaser Poster" loading="lazy">
+              <div class="work-thumb-info">
+                <span class="thumb-label">CONCERT DROP</span>
+                <span class="thumb-title">Phase 1 Lineup Teaser &amp; Gowry Lekshmi</span>
+                <span class="thumb-meta">Digital and street teaser poster revealing concert headliners</span>
+              </div>
+            </div>
+
+            <!-- 11. Artist Announcement Drop -->
+            <div class="work-thumb-card aspect-tall">
+              <img src="../../assets/images/emperio/005.jpg" alt="Artist Announcement Poster Drop" loading="lazy">
+              <div class="work-thumb-info">
+                <span class="thumb-label">ARTIST REVEAL</span>
+                <span class="thumb-title">Artist Announcement Poster Drop</span>
+                <span class="thumb-meta">High-contrast stage artist announcement drop</span>
+              </div>
+            </div>
+
+            <!-- 12. Instagram Social Stories -->
+            <div class="work-thumb-card aspect-tall">
+              <img src="../../assets/images/emperio/007.jpg" alt="Instagram Story Lineup Drop" loading="lazy">
+              <div class="work-thumb-info">
+                <span class="thumb-label">SOCIAL STORIES</span>
+                <span class="thumb-title">Instagram Lineup &amp; Story Drops</span>
+                <span class="thumb-meta">9:16 vertical stories designed for maximum viral reach</span>
+              </div>
+            </div>
+
+            <!-- 13. Integrated Campaign Poster -->
+            <div class="work-thumb-card aspect-tall">
+              <img src="../../assets/images/emperio/emperio2304.jpg" alt="Integrated Campaign Poster" loading="lazy">
+              <div class="work-thumb-info">
+                <span class="thumb-label">CAMPAIGN ART</span>
+                <span class="thumb-title">Integrated Campaign Key Visual</span>
+                <span class="thumb-meta">Print &amp; digital festival art drop</span>
+              </div>
+            </div>
+          </div>
+
+          <h4 style="font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #82ff1f; margin: 0 0 16px;">CONCERT TICKETING, PASSES &amp; MOTION TEASER</h4>
+          <div class="curated-grid-2">
+            <!-- 14. Motion Teaser -->
+            <div class="work-thumb-card aspect-wide">
+              <video autoplay loop muted playsinline style="width:100%; aspect-ratio:16/9; object-fit:cover;">
                 <source src="../../wp-content/uploads/2026/10/1006-2-1.mov" type="video/quicktime">
                 <source src="../../wp-content/uploads/2026/10/1006-2-1.mov" type="video/mp4">
               </video>
@@ -5986,12 +6252,34 @@ class="hfeed site" id="page">
                 <span class="thumb-meta">Kinetic festival drop animation built for viral reach</span>
               </div>
             </div>
-            <div class="work-thumb-card">
-              <img src="../../wp-content/uploads/2026/10/493006251348263.6a356dfb9048a-768x475.jpg" alt="Ticketing and passes" loading="lazy">
+
+            <!-- 15. FEJO x ADJ Ticket Pass -->
+            <div class="work-thumb-card aspect-wide">
+              <img src="../../assets/images/emperio/ticket.jpg" alt="FEJO x ADJ Musical Concert Entry Pass" loading="lazy">
               <div class="work-thumb-info">
-                <span class="thumb-label">EVENT COLLATERAL</span>
-                <span class="thumb-title">VIP Passes &amp; Digital Tickets</span>
-                <span class="thumb-meta">Holographic foil pass design and QR digital ticket interface</span>
+                <span class="thumb-label">TICKETING</span>
+                <span class="thumb-title">FEJO x ADJ Concert Pass &bull; &#8377;100</span>
+                <span class="thumb-meta">Ticket design with holographic details and security QR code</span>
+              </div>
+            </div>
+
+            <!-- 16. Gowry Lekshmi VIP Access Pass -->
+            <div class="work-thumb-card aspect-wide">
+              <img src="../../assets/images/emperio/ticket01.jpg" alt="Gowry Lekshmi Concert VIP Access Pass" loading="lazy">
+              <div class="work-thumb-info">
+                <span class="thumb-label">VIP ACCESS</span>
+                <span class="thumb-title">Gowry Lekshmi VIP Pass &bull; &#8377;250</span>
+                <span class="thumb-meta">Exclusive VIP laminate pass design</span>
+              </div>
+            </div>
+
+            <!-- 17. Gowry Lekshmi General Admission Pass -->
+            <div class="work-thumb-card aspect-wide">
+              <img src="../../assets/images/emperio/ticket02.jpg" alt="Gowry Lekshmi Concert Entry Pass" loading="lazy">
+              <div class="work-thumb-info">
+                <span class="thumb-label">CONCERT PASS</span>
+                <span class="thumb-title">Gowry Lekshmi Entry Pass &bull; &#8377;100</span>
+                <span class="thumb-meta">General admission concert pass design</span>
               </div>
             </div>
           </div>
@@ -6160,6 +6448,145 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
 /*! This file is auto-generated */
 var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
 //# sourceURL=../wp-includes/js/wp-emoji-loader.min.js
+</script>
+<!-- LIGHTBOX POPUP -->
+<div id="creative-lightbox" role="dialog" aria-modal="true" aria-label="Creative Preview">
+  <div class="lightbox-backdrop" id="lb-backdrop"></div>
+  <div class="lightbox-panel">
+    <div class="lightbox-media-wrap" id="lb-media-wrap">
+      <video class="lightbox-video" id="lb-video" controls playsinline></video>
+      <img class="lightbox-image" id="lb-image" alt="Preview">
+    </div>
+  </div>
+  <button class="lightbox-close" id="lb-close" aria-label="Close">&#215;</button>
+  <button class="lightbox-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+  <button class="lightbox-next" id="lb-next" aria-label="Next">&#8250;</button>
+  <div class="lightbox-counter" id="lb-counter"></div>
+</div>
+
+<script id="lightbox-script">
+(function() {
+  if (window.__lbInitialized) return;
+  window.__lbInitialized = true;
+
+  var lb        = document.getElementById('creative-lightbox');
+  var lbVideo   = document.getElementById('lb-video');
+  var lbImage   = document.getElementById('lb-image');
+  var lbClose   = document.getElementById('lb-close');
+  var lbPrev    = document.getElementById('lb-prev');
+  var lbNext    = document.getElementById('lb-next');
+  var lbCounter = document.getElementById('lb-counter');
+  var backdrop  = document.getElementById('lb-backdrop');
+
+  var items = [];
+  var currentIdx = -1;
+
+  function collectItems() {
+    items = [];
+    document.querySelectorAll('.work-thumb-card').forEach(function(card) {
+      var source = card.querySelector('source');
+      var video  = card.querySelector('video');
+      var img    = card.querySelector('img');
+      var vsrc   = (source && (source.src || source.getAttribute('src'))) || (video && (video.src || video.getAttribute('src'))) || '';
+      var isrc   = img ? (img.src || img.getAttribute('src')) : '';
+      if (vsrc) {
+        items.push({ type: 'video', src: vsrc, card: card });
+      } else if (isrc) {
+        items.push({ type: 'image', src: isrc, card: card });
+      }
+    });
+  }
+
+  function openLightbox(idx) {
+    if (idx < 0 || idx >= items.length) return;
+    currentIdx = idx;
+    var item = items[idx];
+
+    lbVideo.classList.remove('lb-active');
+    lbImage.classList.remove('lb-active');
+    lbVideo.pause();
+    lbVideo.src = '';
+    lbImage.src = '';
+
+    if (item.type === 'video') {
+      lbVideo.src = item.src;
+      lbVideo.classList.add('lb-active');
+      lbVideo.load();
+      lbVideo.play().catch(function() {});
+    } else {
+      lbImage.src = item.src;
+      lbImage.classList.add('lb-active');
+    }
+
+    var inlineVid = item.card.querySelector('video');
+    if (inlineVid && !inlineVid.paused) {
+      inlineVid.pause();
+      item.card._wasPaused = false;
+    } else {
+      item.card._wasPaused = true;
+    }
+
+    lbCounter.textContent = (idx + 1) + ' / ' + items.length;
+    lb.classList.add('lb-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lbVideo.pause();
+    lbVideo.src = '';
+    lbImage.src = '';
+    lbVideo.classList.remove('lb-active');
+    lbImage.classList.remove('lb-active');
+    lb.classList.remove('lb-open');
+    document.body.style.overflow = '';
+    if (currentIdx >= 0 && items[currentIdx]) {
+      var card = items[currentIdx].card;
+      var inlineVid = card.querySelector('video');
+      if (inlineVid && !card._wasPaused) {
+        inlineVid.play().catch(function() {});
+      }
+    }
+    currentIdx = -1;
+  }
+
+  function showNext() {
+    if (items.length === 0) return;
+    openLightbox((currentIdx + 1) % items.length);
+  }
+
+  function showPrev() {
+    if (items.length === 0) return;
+    openLightbox((currentIdx - 1 + items.length) % items.length);
+  }
+
+  function attachCardListeners() {
+    document.querySelectorAll('.work-thumb-card').forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        collectItems();
+        var idx = items.findIndex(function(item) { return item.card === card; });
+        if (idx >= 0) openLightbox(idx);
+      });
+    });
+  }
+
+  lbClose.addEventListener('click', closeLightbox);
+  backdrop.addEventListener('click', closeLightbox);
+  lbNext.addEventListener('click', function(e) { e.stopPropagation(); showNext(); });
+  lbPrev.addEventListener('click', function(e) { e.stopPropagation(); showPrev(); });
+
+  document.addEventListener('keydown', function(e) {
+    if (!lb.classList.contains('lb-open')) return;
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowRight')  showNext();
+    if (e.key === 'ArrowLeft')   showPrev();
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachCardListeners);
+  } else {
+    attachCardListeners();
+  }
+})();
 </script>
 	</body>
 </html>

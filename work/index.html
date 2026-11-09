@@ -5568,32 +5568,9 @@ div.wp-block-spectra-post-template,ul.wp-block-spectra-post-template{box-sizing:
 
   /* Others (Extensible) */
 
-  /* ── Others gallery bento cells ── */
-  .others-aim-brand    { grid-column: span 7; grid-row: span 2; }
-  .others-aim-signage  { grid-column: span 5; grid-row: span 2; }
-  .others-hue-hoarding { grid-column: span 12; grid-row: span 2; }
-  .others-hue-merch    { grid-column: span 6; grid-row: span 2; }
-  .others-hue-identity { grid-column: span 6; grid-row: span 2; }
-  .others-conceptual   { grid-column: span 12; grid-row: span 2; }
-
-  @media (max-width: 1024px) {
-    .others-aim-brand    { grid-column: span 12; grid-row: span 2; }
-    .others-aim-signage  { grid-column: span 12; grid-row: span 2; }
-    .others-hue-hoarding { grid-column: span 12; grid-row: span 2; }
-    .others-hue-merch    { grid-column: span 6; grid-row: span 2; }
-    .others-hue-identity { grid-column: span 6; grid-row: span 2; }
-  }
-
-  @media (max-width: 600px) {
-    .others-aim-brand,
-    .others-aim-signage,
-    .others-hue-hoarding,
-    .others-hue-merch,
-    .others-hue-identity { grid-column: span 12; grid-row: span 2; }
-  }
-
+  /* ── Others gallery bento cell ── */
   .others-branding {
-    grid-column: span 4;
+    grid-column: span 12;
     grid-row: span 2;
   }
 
@@ -5753,7 +5730,7 @@ class="hfeed site" id="page">
         <div class="bento-grid">
           <!-- 1. Puretive: Social Media (6 cols, 2 rows) -->
           <a class="bento-cell puretive-social"
-             href="../work/puretive/index.html#social"
+             href="../work/puretive/index.html#influencers"
              aria-label="Puretive, social media"
              style="--cover: url('../assets/covers/puretive-social.webp'), url('../assets/covers/puretive-social.jpg'), url('../assets/covers/puretive-social.png'); --cover-pos: center;">
             <div class="bento-cell-media" aria-hidden="true"></div>
@@ -5879,58 +5856,18 @@ class="hfeed site" id="page">
           <h2 id="bento-title-others" class="bento-box-title">Others</h2>
         </div>
 
-        <div class="bento-grid others-image-gallery" id="bento-others-grid">
+        <div class="bento-grid" id="bento-others-grid">
 
-          <!-- ROW 1: AIM Study Abroad -->
-          <!-- AIM Brand Sheet (7 cols, 2 rows) -->
-          <div class="bento-cell others-aim-brand"
-               style="--cover: url('../assets/covers/others-aim-brand.webp'), url('../assets/covers/others-aim-brand.jpg'); --cover-pos: center top;">
+          <!-- 1. Others: Branding (12 cols, 2 rows) -->
+          <a class="bento-cell others-branding"
+             href="../work/branding/index.html"
+             aria-label="Others, branding"
+             style="--cover: url('../assets/images/branding/w-4.jpg'); --cover-pos: center top;">
             <div class="bento-cell-media" aria-hidden="true"></div>
             <div class="bento-cell-overlay" aria-hidden="true"></div>
-            <span class="bento-cell-label">AIM Study Abroad</span>
-          </div>
-
-          <!-- AIM Signage (5 cols, 2 rows) -->
-          <div class="bento-cell others-aim-signage"
-               style="--cover: url('../assets/covers/others-aim-signage.webp'), url('../assets/covers/others-aim-signage.jpg'); --cover-pos: center;">
-            <div class="bento-cell-media" aria-hidden="true"></div>
-            <div class="bento-cell-overlay" aria-hidden="true"></div>
-            <span class="bento-cell-label">Brand / Identity</span>
-          </div>
-
-          <!-- ROW 2: Hue hoarding — full width -->
-          <!-- Hue Hoarding (12 cols, 2 rows) -->
-          <div class="bento-cell others-hue-hoarding"
-               style="--cover: url('../assets/covers/others-hue-hoarding.webp'), url('../assets/covers/others-hue-hoarding.jpg'); --cover-pos: center;">
-            <div class="bento-cell-media" aria-hidden="true"></div>
-            <div class="bento-cell-overlay" aria-hidden="true"></div>
-            <span class="bento-cell-label">Hue Frames & Prints</span>
-          </div>
-
-          <!-- ROW 3: Hue merch + Hue identity -->
-          <!-- Hue Merch (6 cols, 2 rows) -->
-          <div class="bento-cell others-hue-merch"
-               style="--cover: url('../assets/covers/others-hue-merch.webp'), url('../assets/covers/others-hue-merch.jpg'); --cover-pos: center;">
-            <div class="bento-cell-media" aria-hidden="true"></div>
-            <div class="bento-cell-overlay" aria-hidden="true"></div>
-            <span class="bento-cell-label">Brand / Merch</span>
-          </div>
-
-          <!-- Hue Identity (6 cols, 2 rows) -->
-          <div class="bento-cell others-hue-identity"
-               style="--cover: url('../assets/covers/others-hue-identity.webp'), url('../assets/covers/others-hue-identity.jpg'); --cover-pos: center top;">
-            <div class="bento-cell-media" aria-hidden="true"></div>
-            <div class="bento-cell-overlay" aria-hidden="true"></div>
-            <span class="bento-cell-label">Identity System</span>
-          </div>
-
-          <!-- Conceptual Logo Designs (12 cols, 2 rows) -->
-          <div class="bento-cell others-conceptual"
-               style="--cover: url('../assets/covers/others-conceptual.webp'), url('../assets/covers/others-conceptual.jpg'); --cover-pos: center;">
-            <div class="bento-cell-media" aria-hidden="true"></div>
-            <div class="bento-cell-overlay" aria-hidden="true"></div>
-            <span class="bento-cell-label">Conceptual Logo Designs</span>
-          </div>
+            <span class="bento-cell-label">Branding</span>
+            <span class="bento-cell-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+          </a>
 
         </div>
       </section>
