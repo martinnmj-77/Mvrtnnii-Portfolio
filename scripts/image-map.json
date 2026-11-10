@@ -1,0 +1,578 @@
+{
+  "art-direction/art-direction-01.png": {
+    "originalRel": "art-direction/art-direction-01.png",
+    "webpRel": "art-direction/art-direction-01.webp",
+    "originalBytes": 2304417,
+    "webpBytes": 133962,
+    "width": 941,
+    "height": 1672
+  },
+  "art-direction/art-direction-02.png": {
+    "originalRel": "art-direction/art-direction-02.png",
+    "webpRel": "art-direction/art-direction-02.webp",
+    "originalBytes": 2514657,
+    "webpBytes": 205004,
+    "width": 941,
+    "height": 1672
+  },
+  "art-direction/art-direction-03.png": {
+    "originalRel": "art-direction/art-direction-03.png",
+    "webpRel": "art-direction/art-direction-03.webp",
+    "originalBytes": 1904531,
+    "webpBytes": 99066,
+    "width": 1062,
+    "height": 1480
+  },
+  "art-direction/art-direction-04.png": {
+    "originalRel": "art-direction/art-direction-04.png",
+    "webpRel": "art-direction/art-direction-04.webp",
+    "originalBytes": 2246487,
+    "webpBytes": 135338,
+    "width": 1024,
+    "height": 1536
+  },
+  "art-direction/art-direction-05.png": {
+    "originalRel": "art-direction/art-direction-05.png",
+    "webpRel": "art-direction/art-direction-05.webp",
+    "originalBytes": 2160660,
+    "webpBytes": 139694,
+    "width": 1085,
+    "height": 1450
+  },
+  "art-direction/art-direction-06.png": {
+    "originalRel": "art-direction/art-direction-06.png",
+    "webpRel": "art-direction/art-direction-06.webp",
+    "originalBytes": 2362766,
+    "webpBytes": 124028,
+    "width": 1400,
+    "height": 933
+  },
+  "art-direction/art-direction-07.png": {
+    "originalRel": "art-direction/art-direction-07.png",
+    "webpRel": "art-direction/art-direction-07.webp",
+    "originalBytes": 2131402,
+    "webpBytes": 120264,
+    "width": 1086,
+    "height": 1448
+  },
+  "art-direction/art-direction-08.png": {
+    "originalRel": "art-direction/art-direction-08.png",
+    "webpRel": "art-direction/art-direction-08.webp",
+    "originalBytes": 1718003,
+    "webpBytes": 75308,
+    "width": 1086,
+    "height": 1448
+  },
+  "art-direction/art-direction-09.png": {
+    "originalRel": "art-direction/art-direction-09.png",
+    "webpRel": "art-direction/art-direction-09.webp",
+    "originalBytes": 1776883,
+    "webpBytes": 65040,
+    "width": 1086,
+    "height": 1448
+  },
+  "art-direction/art-direction-10.png": {
+    "originalRel": "art-direction/art-direction-10.png",
+    "webpRel": "art-direction/art-direction-10.webp",
+    "originalBytes": 1944073,
+    "webpBytes": 111922,
+    "width": 1086,
+    "height": 1448
+  },
+  "art-direction/art-direction-11.png": {
+    "originalRel": "art-direction/art-direction-11.png",
+    "webpRel": "art-direction/art-direction-11.webp",
+    "originalBytes": 1694490,
+    "webpBytes": 65448,
+    "width": 1400,
+    "height": 1050
+  },
+  "art-direction/art-direction-12.png": {
+    "originalRel": "art-direction/art-direction-12.png",
+    "webpRel": "art-direction/art-direction-12.webp",
+    "originalBytes": 2265305,
+    "webpBytes": 153368,
+    "width": 1400,
+    "height": 1050
+  },
+  "art-direction/art-direction-13.png": {
+    "originalRel": "art-direction/art-direction-13.png",
+    "webpRel": "art-direction/art-direction-13.webp",
+    "originalBytes": 2409363,
+    "webpBytes": 138714,
+    "width": 1024,
+    "height": 1536
+  },
+  "art-direction/art-direction-14.png": {
+    "originalRel": "art-direction/art-direction-14.png",
+    "webpRel": "art-direction/art-direction-14.webp",
+    "originalBytes": 2558274,
+    "webpBytes": 177078,
+    "width": 1024,
+    "height": 1536
+  },
+  "art-direction/art-direction-15.png": {
+    "originalRel": "art-direction/art-direction-15.png",
+    "webpRel": "art-direction/art-direction-15.webp",
+    "originalBytes": 2746279,
+    "webpBytes": 180108,
+    "width": 1400,
+    "height": 975
+  },
+  "art-direction/art-direction-16.png": {
+    "originalRel": "art-direction/art-direction-16.png",
+    "webpRel": "art-direction/art-direction-16.webp",
+    "originalBytes": 2031874,
+    "webpBytes": 76400,
+    "width": 1024,
+    "height": 1536
+  },
+  "art-direction/art-direction-17.jpg": {
+    "originalRel": "art-direction/art-direction-17.jpg",
+    "webpRel": "art-direction/art-direction-17.webp",
+    "originalBytes": 3513700,
+    "webpBytes": 197052,
+    "width": 1400,
+    "height": 1050
+  },
+  "art-direction/art-direction-18.jpg": {
+    "originalRel": "art-direction/art-direction-18.jpg",
+    "webpRel": "art-direction/art-direction-18.webp",
+    "originalBytes": 1090721,
+    "webpBytes": 64564,
+    "width": 1400,
+    "height": 1050
+  },
+  "art-direction/art-direction-19.jpg": {
+    "originalRel": "art-direction/art-direction-19.jpg",
+    "webpRel": "art-direction/art-direction-19.webp",
+    "originalBytes": 7062641,
+    "webpBytes": 220886,
+    "width": 1400,
+    "height": 800
+  },
+  "art-direction/art-direction-20.jpg": {
+    "originalRel": "art-direction/art-direction-20.jpg",
+    "webpRel": "art-direction/art-direction-20.webp",
+    "originalBytes": 567228,
+    "webpBytes": 240844,
+    "width": 1023,
+    "height": 1537
+  },
+  "carousel-01/carousel-01-01.jpeg": {
+    "originalRel": "carousel-01/carousel-01-01.jpeg",
+    "webpRel": "carousel-01/carousel-01-01.webp",
+    "originalBytes": 276456,
+    "webpBytes": 62020,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-01/carousel-01-02.jpeg": {
+    "originalRel": "carousel-01/carousel-01-02.jpeg",
+    "webpRel": "carousel-01/carousel-01-02.webp",
+    "originalBytes": 277809,
+    "webpBytes": 62786,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-01/carousel-01-03.jpeg": {
+    "originalRel": "carousel-01/carousel-01-03.jpeg",
+    "webpRel": "carousel-01/carousel-01-03.webp",
+    "originalBytes": 270425,
+    "webpBytes": 58000,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-01/carousel-01-04.jpeg": {
+    "originalRel": "carousel-01/carousel-01-04.jpeg",
+    "webpRel": "carousel-01/carousel-01-04.webp",
+    "originalBytes": 364897,
+    "webpBytes": 91854,
+    "width": 1086,
+    "height": 1448
+  },
+  "carousel-01/carousel-01-05.jpeg": {
+    "originalRel": "carousel-01/carousel-01-05.jpeg",
+    "webpRel": "carousel-01/carousel-01-05.webp",
+    "originalBytes": 252022,
+    "webpBytes": 60498,
+    "width": 900,
+    "height": 1600
+  },
+  "carousel-01/carousel-01-06.jpeg": {
+    "originalRel": "carousel-01/carousel-01-06.jpeg",
+    "webpRel": "carousel-01/carousel-01-06.webp",
+    "originalBytes": 333998,
+    "webpBytes": 70834,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-01/carousel-01-07.jpeg": {
+    "originalRel": "carousel-01/carousel-01-07.jpeg",
+    "webpRel": "carousel-01/carousel-01-07.webp",
+    "originalBytes": 383361,
+    "webpBytes": 80006,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-01/carousel-01-08.jpeg": {
+    "originalRel": "carousel-01/carousel-01-08.jpeg",
+    "webpRel": "carousel-01/carousel-01-08.webp",
+    "originalBytes": 253870,
+    "webpBytes": 72032,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-02/carousel-02-01.jpeg": {
+    "originalRel": "carousel-02/carousel-02-01.jpeg",
+    "webpRel": "carousel-02/carousel-02-01.webp",
+    "originalBytes": 297737,
+    "webpBytes": 63588,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-02/carousel-02-02.jpeg": {
+    "originalRel": "carousel-02/carousel-02-02.jpeg",
+    "webpRel": "carousel-02/carousel-02-02.webp",
+    "originalBytes": 324949,
+    "webpBytes": 62798,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-02/carousel-02-03.jpeg": {
+    "originalRel": "carousel-02/carousel-02-03.jpeg",
+    "webpRel": "carousel-02/carousel-02-03.webp",
+    "originalBytes": 293079,
+    "webpBytes": 65978,
+    "width": 1092,
+    "height": 1440
+  },
+  "carousel-02/carousel-02-04.jpeg": {
+    "originalRel": "carousel-02/carousel-02-04.jpeg",
+    "webpRel": "carousel-02/carousel-02-04.webp",
+    "originalBytes": 370487,
+    "webpBytes": 83618,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-02/carousel-02-05.jpeg": {
+    "originalRel": "carousel-02/carousel-02-05.jpeg",
+    "webpRel": "carousel-02/carousel-02-05.webp",
+    "originalBytes": 482330,
+    "webpBytes": 101740,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-02/carousel-02-06.jpeg": {
+    "originalRel": "carousel-02/carousel-02-06.jpeg",
+    "webpRel": "carousel-02/carousel-02-06.webp",
+    "originalBytes": 237418,
+    "webpBytes": 52250,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-02/carousel-02-07.jpeg": {
+    "originalRel": "carousel-02/carousel-02-07.jpeg",
+    "webpRel": "carousel-02/carousel-02-07.webp",
+    "originalBytes": 226956,
+    "webpBytes": 47034,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-03/carousel-03-01.jpeg": {
+    "originalRel": "carousel-03/carousel-03-01.jpeg",
+    "webpRel": "carousel-03/carousel-03-01.webp",
+    "originalBytes": 397191,
+    "webpBytes": 112652,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-03/carousel-03-02.jpeg": {
+    "originalRel": "carousel-03/carousel-03-02.jpeg",
+    "webpRel": "carousel-03/carousel-03-02.webp",
+    "originalBytes": 352044,
+    "webpBytes": 97238,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-03/carousel-03-03.jpeg": {
+    "originalRel": "carousel-03/carousel-03-03.jpeg",
+    "webpRel": "carousel-03/carousel-03-03.webp",
+    "originalBytes": 269960,
+    "webpBytes": 63554,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-03/carousel-03-04.jpeg": {
+    "originalRel": "carousel-03/carousel-03-04.jpeg",
+    "webpRel": "carousel-03/carousel-03-04.webp",
+    "originalBytes": 392506,
+    "webpBytes": 121228,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-03/carousel-03-05.jpeg": {
+    "originalRel": "carousel-03/carousel-03-05.jpeg",
+    "webpRel": "carousel-03/carousel-03-05.webp",
+    "originalBytes": 358149,
+    "webpBytes": 88174,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-03/carousel-03-06.jpeg": {
+    "originalRel": "carousel-03/carousel-03-06.jpeg",
+    "webpRel": "carousel-03/carousel-03-06.webp",
+    "originalBytes": 355162,
+    "webpBytes": 104384,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-04/carousel-04-01.jpeg": {
+    "originalRel": "carousel-04/carousel-04-01.jpeg",
+    "webpRel": "carousel-04/carousel-04-01.webp",
+    "originalBytes": 380252,
+    "webpBytes": 106588,
+    "width": 1092,
+    "height": 1440
+  },
+  "carousel-04/carousel-04-02.jpeg": {
+    "originalRel": "carousel-04/carousel-04-02.jpeg",
+    "webpRel": "carousel-04/carousel-04-02.webp",
+    "originalBytes": 353405,
+    "webpBytes": 74810,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-04/carousel-04-03.jpeg": {
+    "originalRel": "carousel-04/carousel-04-03.jpeg",
+    "webpRel": "carousel-04/carousel-04-03.webp",
+    "originalBytes": 261551,
+    "webpBytes": 56942,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-04/carousel-04-04.jpeg": {
+    "originalRel": "carousel-04/carousel-04-04.jpeg",
+    "webpRel": "carousel-04/carousel-04-04.webp",
+    "originalBytes": 442511,
+    "webpBytes": 129638,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-04/carousel-04-05.jpeg": {
+    "originalRel": "carousel-04/carousel-04-05.jpeg",
+    "webpRel": "carousel-04/carousel-04-05.webp",
+    "originalBytes": 412662,
+    "webpBytes": 116372,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-04/carousel-04-06.jpeg": {
+    "originalRel": "carousel-04/carousel-04-06.jpeg",
+    "webpRel": "carousel-04/carousel-04-06.webp",
+    "originalBytes": 284707,
+    "webpBytes": 46874,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-04/carousel-04-07.jpeg": {
+    "originalRel": "carousel-04/carousel-04-07.jpeg",
+    "webpRel": "carousel-04/carousel-04-07.webp",
+    "originalBytes": 365924,
+    "webpBytes": 86690,
+    "width": 1091,
+    "height": 1442
+  },
+  "carousel-04/carousel-04-08.jpeg": {
+    "originalRel": "carousel-04/carousel-04-08.jpeg",
+    "webpRel": "carousel-04/carousel-04-08.webp",
+    "originalBytes": 234429,
+    "webpBytes": 46416,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-05/carousel-05-01.jpeg": {
+    "originalRel": "carousel-05/carousel-05-01.jpeg",
+    "webpRel": "carousel-05/carousel-05-01.webp",
+    "originalBytes": 335742,
+    "webpBytes": 81914,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-05/carousel-05-02.jpeg": {
+    "originalRel": "carousel-05/carousel-05-02.jpeg",
+    "webpRel": "carousel-05/carousel-05-02.webp",
+    "originalBytes": 315981,
+    "webpBytes": 80112,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-05/carousel-05-03.jpeg": {
+    "originalRel": "carousel-05/carousel-05-03.jpeg",
+    "webpRel": "carousel-05/carousel-05-03.webp",
+    "originalBytes": 327312,
+    "webpBytes": 81434,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-05/carousel-05-04.jpeg": {
+    "originalRel": "carousel-05/carousel-05-04.jpeg",
+    "webpRel": "carousel-05/carousel-05-04.webp",
+    "originalBytes": 288559,
+    "webpBytes": 61004,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-05/carousel-05-05.jpeg": {
+    "originalRel": "carousel-05/carousel-05-05.jpeg",
+    "webpRel": "carousel-05/carousel-05-05.webp",
+    "originalBytes": 237570,
+    "webpBytes": 47454,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-05/carousel-05-06.jpeg": {
+    "originalRel": "carousel-05/carousel-05-06.jpeg",
+    "webpRel": "carousel-05/carousel-05-06.webp",
+    "originalBytes": 337242,
+    "webpBytes": 86812,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-06/carousel-06-01.png": {
+    "originalRel": "carousel-06/carousel-06-01.png",
+    "webpRel": "carousel-06/carousel-06-01.webp",
+    "originalBytes": 2175729,
+    "webpBytes": 146786,
+    "width": 1024,
+    "height": 1536
+  },
+  "carousel-06/carousel-06-02.png": {
+    "originalRel": "carousel-06/carousel-06-02.png",
+    "webpRel": "carousel-06/carousel-06-02.webp",
+    "originalBytes": 1929031,
+    "webpBytes": 74574,
+    "width": 1024,
+    "height": 1536
+  },
+  "carousel-06/carousel-06-03.png": {
+    "originalRel": "carousel-06/carousel-06-03.png",
+    "webpRel": "carousel-06/carousel-06-03.webp",
+    "originalBytes": 2280838,
+    "webpBytes": 111886,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-06/carousel-06-04.png": {
+    "originalRel": "carousel-06/carousel-06-04.png",
+    "webpRel": "carousel-06/carousel-06-04.webp",
+    "originalBytes": 2368151,
+    "webpBytes": 172312,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-06/carousel-06-05.png": {
+    "originalRel": "carousel-06/carousel-06-05.png",
+    "webpRel": "carousel-06/carousel-06-05.webp",
+    "originalBytes": 2087675,
+    "webpBytes": 121810,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-06/carousel-06-06.png": {
+    "originalRel": "carousel-06/carousel-06-06.png",
+    "webpRel": "carousel-06/carousel-06-06.webp",
+    "originalBytes": 2029863,
+    "webpBytes": 151808,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-06/carousel-06-07.png": {
+    "originalRel": "carousel-06/carousel-06-07.png",
+    "webpRel": "carousel-06/carousel-06-07.webp",
+    "originalBytes": 2216587,
+    "webpBytes": 144196,
+    "width": 1024,
+    "height": 1536
+  },
+  "carousel-06/carousel-06-08.png": {
+    "originalRel": "carousel-06/carousel-06-08.png",
+    "webpRel": "carousel-06/carousel-06-08.webp",
+    "originalBytes": 1978211,
+    "webpBytes": 98528,
+    "width": 1024,
+    "height": 1536
+  },
+  "carousel-06/carousel-06-09.jpeg": {
+    "originalRel": "carousel-06/carousel-06-09.jpeg",
+    "webpRel": "carousel-06/carousel-06-09.webp",
+    "originalBytes": 191287,
+    "webpBytes": 48134,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-06/carousel-06-10.jpeg": {
+    "originalRel": "carousel-06/carousel-06-10.jpeg",
+    "webpRel": "carousel-06/carousel-06-10.webp",
+    "originalBytes": 301368,
+    "webpBytes": 74914,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-06/carousel-06-11.jpeg": {
+    "originalRel": "carousel-06/carousel-06-11.jpeg",
+    "webpRel": "carousel-06/carousel-06-11.webp",
+    "originalBytes": 352809,
+    "webpBytes": 91074,
+    "width": 1122,
+    "height": 1402
+  },
+  "carousel-07/carousel-07-01.png": {
+    "originalRel": "carousel-07/carousel-07-01.png",
+    "webpRel": "carousel-07/carousel-07-01.webp",
+    "originalBytes": 1906263,
+    "webpBytes": 97770,
+    "width": 1086,
+    "height": 1448
+  },
+  "carousel-07/carousel-07-02.png": {
+    "originalRel": "carousel-07/carousel-07-02.png",
+    "webpRel": "carousel-07/carousel-07-02.webp",
+    "originalBytes": 2387016,
+    "webpBytes": 189434,
+    "width": 1086,
+    "height": 1448
+  },
+  "carousel-07/carousel-07-03.jpeg": {
+    "originalRel": "carousel-07/carousel-07-03.jpeg",
+    "webpRel": "carousel-07/carousel-07-03.webp",
+    "originalBytes": 376439,
+    "webpBytes": 104874,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-07/carousel-07-04.jpeg": {
+    "originalRel": "carousel-07/carousel-07-04.jpeg",
+    "webpRel": "carousel-07/carousel-07-04.webp",
+    "originalBytes": 283567,
+    "webpBytes": 67846,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-07/carousel-07-05.jpeg": {
+    "originalRel": "carousel-07/carousel-07-05.jpeg",
+    "webpRel": "carousel-07/carousel-07-05.webp",
+    "originalBytes": 395134,
+    "webpBytes": 102026,
+    "width": 1080,
+    "height": 1440
+  },
+  "carousel-07/carousel-07-06.jpeg": {
+    "originalRel": "carousel-07/carousel-07-06.jpeg",
+    "webpRel": "carousel-07/carousel-07-06.webp",
+    "originalBytes": 427954,
+    "webpBytes": 115112,
+    "width": 1080,
+    "height": 1440
+  }
+}

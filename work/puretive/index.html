@@ -5822,14 +5822,13 @@ div.wp-block-spectra-post-template,ul.wp-block-spectra-post-template{box-sizing:
     max-width: 860px;
     margin: 12px 0 26px 0;
   }
-  
   /* GRID */
   .reels-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 18px;
   }
-  @media (max-width: 1100px) {
+  @media (max-width: 1200px) {
     .reels-grid {
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
@@ -5847,7 +5846,6 @@ div.wp-block-spectra-post-template,ul.wp-block-spectra-post-template{box-sizing:
       gap: 16px;
     }
   }
-
   /* REEL CARD - MINIMALIST CLEAN PLAYER */
   .reel-card {
     background: #181818;
@@ -5870,21 +5868,41 @@ div.wp-block-spectra-post-template,ul.wp-block-spectra-post-template{box-sizing:
     overflow: hidden;
     cursor: pointer;
   }
+  .reel-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+    transition: opacity 0.35s ease;
+    background: #121212;
+  }
   .reel-video {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     background: #000;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .reel-video.is-playing {
+    opacity: 1;
   }
   .reel-overlay-scrim {
     position: absolute;
     inset: 0;
     pointer-events: none;
+    z-index: 2;
     background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 65%, rgba(0,0,0,0.6) 100%);
     transition: opacity 0.2s ease;
   }
-
   /* CONTROLS: ONLY PAUSE/PLAY & MUTE/UNMUTE BUTTONS */
   .reel-card-controls {
     position: absolute;
@@ -5919,7 +5937,49 @@ div.wp-block-spectra-post-template,ul.wp-block-spectra-post-template{box-sizing:
   .reel-btn svg {
     display: block;
   }
-</style>
+  /* SHOW MORE & PROGRESSIVE REVEAL */
+  .reel-card.reel-card-hidden {
+    display: none !important;
+  }
+  .reels-show-more-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 36px;
+    margin-bottom: 8px;
+    width: 100%;
+  }
+  .reels-show-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    border-radius: 100px;
+    padding: 13px 30px;
+    font-family: "Figtree", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reels-show-more-btn:hover {
+    background: #82ff1f;
+    color: #111111;
+    border-color: #82ff1f;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(130, 255, 31, 0.3);
+  }
+  .reels-show-more-btn svg {
+    transition: transform 0.25s ease;
+  }
+  .reels-show-more-btn:hover svg {
+    transform: translateY(2px);
+  }
+  </style>
 
 
 <style id="lightbox-styles">
@@ -6296,15 +6356,13 @@ class="hfeed site" id="page">
           
           <div class="reels-grid">
             
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/influencers/1_0909_1_2_.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/influencers/1_0909_1_2_.mp4" data-preview-src="../../assets/reels/puretive/influencers/1_0909_1_2_-preview.mp4" data-poster-src="../../assets/reels/puretive/influencers/1_0909_1_2_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/influencers/1_0909_1_2_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/influencers/1_0909_1_2_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6326,15 +6384,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/influencers/2_For_the_days_when_your_head_needs_a_little_extra_care_%F0%9F%AB%B6%F0%9F%8F%BC%E2%9C%A8%5Bheadache_roll_on%2C_migraine_roll_on%2C_.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/influencers/2_For_the_days_when_your_head_needs_a_little_extra_care.mp4" data-preview-src="../../assets/reels/puretive/influencers/2_For_the_days_when_your_head_needs_a_little_extra_care-preview.mp4" data-poster-src="../../assets/reels/puretive/influencers/2_For_the_days_when_your_head_needs_a_little_extra_care.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/influencers/2_For_the_days_when_your_head_needs_a_little_extra_care_%F0%9F%AB%B6%F0%9F%8F%BC%E2%9C%A8%5Bheadache_roll_on%2C_migraine_roll_on%2C_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/influencers/2_For_the_days_when_your_head_needs_a_little_extra_care.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6356,15 +6412,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/influencers/3_POV-_Your_head_needs_a_break._%F0%9F%92%99Roll_on._Breathe._Reset._%F0%9F%8C%BF_%23ADShop_Migraine_Ease_Roll-On_%E2%80%94_comm.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/influencers/3_POV-Your_head_needs_a_break_Roll_on_Breathe_Reset.mp4" data-preview-src="../../assets/reels/puretive/influencers/3_POV-Your_head_needs_a_break_Roll_on_Breathe_Reset-preview.mp4" data-poster-src="../../assets/reels/puretive/influencers/3_POV-Your_head_needs_a_break_Roll_on_Breathe_Reset.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/influencers/3_POV-_Your_head_needs_a_break._%F0%9F%92%99Roll_on._Breathe._Reset._%F0%9F%8C%BF_%23ADShop_Migraine_Ease_Roll-On_%E2%80%94_comm.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/influencers/3_POV-Your_head_needs_a_break_Roll_on_Breathe_Reset.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6386,15 +6440,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/influencers/4_snapgram.io_kb9yqjnlley4.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/influencers/4_snapgram.io_kb9yqjnlley4.mp4" data-preview-src="../../assets/reels/puretive/influencers/4_snapgram.io_kb9yqjnlley4-preview.mp4" data-poster-src="../../assets/reels/puretive/influencers/4_snapgram.io_kb9yqjnlley4.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/influencers/4_snapgram.io_kb9yqjnlley4.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/influencers/4_snapgram.io_kb9yqjnlley4.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6416,15 +6468,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/influencers/5_snapgram.io_ngosc44zq7kn.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/influencers/5_snapgram.io_ngosc44zq7kn.mp4" data-preview-src="../../assets/reels/puretive/influencers/5_snapgram.io_ngosc44zq7kn-preview.mp4" data-poster-src="../../assets/reels/puretive/influencers/5_snapgram.io_ngosc44zq7kn.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/influencers/5_snapgram.io_ngosc44zq7kn.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/influencers/5_snapgram.io_ngosc44zq7kn.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6446,15 +6496,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/influencers/6_snapgram.io_okiwi7dws754.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/influencers/6_snapgram.io_okiwi7dws754.mp4" data-preview-src="../../assets/reels/puretive/influencers/6_snapgram.io_okiwi7dws754-preview.mp4" data-poster-src="../../assets/reels/puretive/influencers/6_snapgram.io_okiwi7dws754.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/influencers/6_snapgram.io_okiwi7dws754.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/influencers/6_snapgram.io_okiwi7dws754.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6476,15 +6524,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/influencers/7_snapgram.io_zhbdd1drd9zv.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/influencers/7_snapgram.io_zhbdd1drd9zv.mp4" data-preview-src="../../assets/reels/puretive/influencers/7_snapgram.io_zhbdd1drd9zv-preview.mp4" data-poster-src="../../assets/reels/puretive/influencers/7_snapgram.io_zhbdd1drd9zv.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/influencers/7_snapgram.io_zhbdd1drd9zv.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/influencers/7_snapgram.io_zhbdd1drd9zv.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6505,6 +6551,12 @@ class="hfeed site" id="page">
                 </div>
               </div>
             </div>
+          </div>
+          <div class="reels-show-more-wrap">
+            <button type="button" class="reels-show-more-btn" aria-expanded="false">
+              <span>Show more (1 more)</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
           </div>
         </section>
 
@@ -6521,15 +6573,13 @@ class="hfeed site" id="page">
           
           <div class="reels-grid">
             
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/1_%3D%3D%2B%3D%3D_1_.mov">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/1_ai-intro_1_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/1_ai-intro_1_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/1_ai-intro_1_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/1_%3D%3D%2B%3D%3D_1_.mov" type="video/quicktime">
-                  <source src="../../assets/reels/puretive/ai-influencers/1_%3D%3D%2B%3D%3D_1_.mov" type="video/mp4">
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/1_ai-intro_1_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6551,15 +6601,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/2_0810_2_.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/2_0810_2_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/2_0810_2_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/2_0810_2_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/2_0810_2_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/2_0810_2_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6581,15 +6629,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/3_0810_3_1_.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/3_0810_3_1_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/3_0810_3_1_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/3_0810_3_1_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/3_0810_3_1_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/3_0810_3_1_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6611,15 +6657,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/4_0811_3_.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/4_0811_3_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/4_0811_3_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/4_0811_3_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/4_0811_3_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/4_0811_3_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6641,15 +6685,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/5_0812_1_5_.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/5_0812_1_5_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/5_0812_1_5_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/5_0812_1_5_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/5_0812_1_5_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/5_0812_1_5_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6671,15 +6713,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/6_0824.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/6_0824.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/6_0824-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/6_0824.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/6_0824.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/6_0824.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6701,15 +6741,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/7_0825_1_.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/7_0825_1_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/7_0825_1_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/7_0825_1_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/7_0825_1_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/7_0825_1_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6731,15 +6769,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/8_0827.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/8_0827.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/8_0827-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/8_0827.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/8_0827.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/8_0827.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6761,15 +6797,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/9_0902_3_.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/9_0902_3_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/9_0902_3_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/9_0902_3_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/9_0902_3_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/9_0902_3_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6791,15 +6825,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/10_0908_1_1_.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/10_0908_1_1_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/10_0908_1_1_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/10_0908_1_1_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/10_0908_1_1_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/10_0908_1_1_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6821,15 +6853,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/11_0909_1_.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/11_0909_1_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/11_0909_1_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/11_0909_1_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/11_0909_1_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/11_0909_1_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6851,15 +6881,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/12_0911.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/12_0911.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/12_0911-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/12_0911.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/12_0911.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/12_0911.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6881,15 +6909,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/13_0915_2_.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/13_0915_2_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/13_0915_2_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/13_0915_2_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/13_0915_2_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/13_0915_2_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6911,15 +6937,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/14_0916_3_.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/14_0916_3_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/14_0916_3_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/14_0916_3_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/14_0916_3_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/14_0916_3_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6941,15 +6965,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/15_0918.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/15_0918.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/15_0918-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/15_0918.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/15_0918.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/15_0918.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -6971,15 +6993,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/16_0921_3_.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/16_0921_3_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/16_0921_3_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/16_0921_3_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/16_0921_3_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/16_0921_3_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7001,15 +7021,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/17_0922_1_.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/17_0922_1_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/17_0922_1_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/17_0922_1_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/17_0922_1_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/17_0922_1_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7031,15 +7049,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/18_0923_2_.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/18_0923_2_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/18_0923_2_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/18_0923_2_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/18_0923_2_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/18_0923_2_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7061,15 +7077,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/19_0925.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/19_0925.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/19_0925-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/19_0925.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/19_0925.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/19_0925.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7091,15 +7105,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/20_0928.mov">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/20_0928.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/20_0928-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/20_0928.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/20_0928.mov" type="video/quicktime">
-                  <source src="../../assets/reels/puretive/ai-influencers/20_0928.mov" type="video/mp4">
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/20_0928.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7121,15 +7133,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/21_1005_1_.mov">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/21_1005_1_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/21_1005_1_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/21_1005_1_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/21_1005_1_.mov" type="video/quicktime">
-                  <source src="../../assets/reels/puretive/ai-influencers/21_1005_1_.mov" type="video/mp4">
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/21_1005_1_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7151,15 +7161,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/22_1005_1_.mov">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/22_1005_1_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/22_1005_1_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/22_1005_1_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/22_1005_1_.mov" type="video/quicktime">
-                  <source src="../../assets/reels/puretive/ai-influencers/22_1005_1_.mov" type="video/mp4">
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/22_1005_1_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7181,15 +7189,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/23_1006_1_1_.mov">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/23_1006_1_1_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/23_1006_1_1_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/23_1006_1_1_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/23_1006_1_1_.mov" type="video/quicktime">
-                  <source src="../../assets/reels/puretive/ai-influencers/23_1006_1_1_.mov" type="video/mp4">
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/23_1006_1_1_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7211,15 +7217,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/24_1006_2_.mov">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/24_1006_2_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/24_1006_2_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/24_1006_2_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/24_1006_2_.mov" type="video/quicktime">
-                  <source src="../../assets/reels/puretive/ai-influencers/24_1006_2_.mov" type="video/mp4">
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/24_1006_2_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7241,15 +7245,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/25_1012.mov">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/25_1012.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/25_1012-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/25_1012.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/25_1012.mov" type="video/quicktime">
-                  <source src="../../assets/reels/puretive/ai-influencers/25_1012.mov" type="video/mp4">
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/25_1012.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7271,15 +7273,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/26_1013.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/26_1013.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/26_1013-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/26_1013.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/26_1013.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/26_1013.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7301,15 +7301,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/ai-influencers/27_1014_1_.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/ai-influencers/27_1014_1_.mp4" data-preview-src="../../assets/reels/puretive/ai-influencers/27_1014_1_-preview.mp4" data-poster-src="../../assets/reels/puretive/ai-influencers/27_1014_1_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/ai-influencers/27_1014_1_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/ai-influencers/27_1014_1_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7330,6 +7328,12 @@ class="hfeed site" id="page">
                 </div>
               </div>
             </div>
+          </div>
+          <div class="reels-show-more-wrap">
+            <button type="button" class="reels-show-more-btn" aria-expanded="false">
+              <span>Show more (21 more)</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
           </div>
         </section>
 
@@ -7346,15 +7350,13 @@ class="hfeed site" id="page">
           
           <div class="reels-grid">
             
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/animation/1_0729_2_.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/animation/1_0729_2_.mp4" data-preview-src="../../assets/reels/puretive/animation/1_0729_2_-preview.mp4" data-poster-src="../../assets/reels/puretive/animation/1_0729_2_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/animation/1_0729_2_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/animation/1_0729_2_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7376,15 +7378,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/animation/2_0730.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/animation/2_0730.mp4" data-preview-src="../../assets/reels/puretive/animation/2_0730-preview.mp4" data-poster-src="../../assets/reels/puretive/animation/2_0730.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/animation/2_0730.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/animation/2_0730.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7406,15 +7406,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/animation/3_0731_2_.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/animation/3_0731_2_.mp4" data-preview-src="../../assets/reels/puretive/animation/3_0731_2_-preview.mp4" data-poster-src="../../assets/reels/puretive/animation/3_0731_2_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/animation/3_0731_2_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/animation/3_0731_2_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7436,15 +7434,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/animation/4_0804_5_.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/animation/4_0804_5_.mp4" data-preview-src="../../assets/reels/puretive/animation/4_0804_5_-preview.mp4" data-poster-src="../../assets/reels/puretive/animation/4_0804_5_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/animation/4_0804_5_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/animation/4_0804_5_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7466,15 +7462,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/animation/5_0819.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/animation/5_0819.mp4" data-preview-src="../../assets/reels/puretive/animation/5_0819-preview.mp4" data-poster-src="../../assets/reels/puretive/animation/5_0819.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/animation/5_0819.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/animation/5_0819.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7496,15 +7490,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/animation/6_0828_1_.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/animation/6_0828_1_.mp4" data-preview-src="../../assets/reels/puretive/animation/6_0828_1_-preview.mp4" data-poster-src="../../assets/reels/puretive/animation/6_0828_1_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/animation/6_0828_1_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/animation/6_0828_1_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7526,15 +7518,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/animation/7_0831_1_1_.mp4">
+            <div class="reel-card reel-card-hidden" style="display: none;" data-video-src="../../assets/reels/puretive/animation/7_0831_1_1_.mp4" data-preview-src="../../assets/reels/puretive/animation/7_0831_1_1_-preview.mp4" data-poster-src="../../assets/reels/puretive/animation/7_0831_1_1_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/animation/7_0831_1_1_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/animation/7_0831_1_1_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7555,6 +7545,12 @@ class="hfeed site" id="page">
                 </div>
               </div>
             </div>
+          </div>
+          <div class="reels-show-more-wrap">
+            <button type="button" class="reels-show-more-btn" aria-expanded="false">
+              <span>Show more (1 more)</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
           </div>
         </section>
 
@@ -7571,15 +7567,13 @@ class="hfeed site" id="page">
           
           <div class="reels-grid">
             
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/motion-graphics-ad/1_0817.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/motion-graphics-ad/1_0817.mp4" data-preview-src="../../assets/reels/puretive/motion-graphics-ad/1_0817-preview.mp4" data-poster-src="../../assets/reels/puretive/motion-graphics-ad/1_0817.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/motion-graphics-ad/1_0817.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/motion-graphics-ad/1_0817.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7601,15 +7595,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/motion-graphics-ad/2_0831.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/motion-graphics-ad/2_0831.mp4" data-preview-src="../../assets/reels/puretive/motion-graphics-ad/2_0831-preview.mp4" data-poster-src="../../assets/reels/puretive/motion-graphics-ad/2_0831.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/motion-graphics-ad/2_0831.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/motion-graphics-ad/2_0831.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7631,15 +7623,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/motion-graphics-ad/3_1016.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/motion-graphics-ad/3_1016.mp4" data-preview-src="../../assets/reels/puretive/motion-graphics-ad/3_1016-preview.mp4" data-poster-src="../../assets/reels/puretive/motion-graphics-ad/3_1016.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/motion-graphics-ad/3_1016.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/motion-graphics-ad/3_1016.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7676,15 +7666,13 @@ class="hfeed site" id="page">
           
           <div class="reels-grid">
             
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/posts/1_0827_1_.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/posts/1_0827_1_.mp4" data-preview-src="../../assets/reels/puretive/posts/1_0827_1_-preview.mp4" data-poster-src="../../assets/reels/puretive/posts/1_0827_1_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/posts/1_0827_1_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/posts/1_0827_1_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7706,15 +7694,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/posts/2_0901_1_.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/posts/2_0901_1_.mp4" data-preview-src="../../assets/reels/puretive/posts/2_0901_1_-preview.mp4" data-poster-src="../../assets/reels/puretive/posts/2_0901_1_.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/posts/2_0901_1_.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/posts/2_0901_1_.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7736,15 +7722,13 @@ class="hfeed site" id="page">
               </div>
             </div>
 
-            <div class="reel-card" data-video-src="../../assets/reels/puretive/posts/3_snapgram.io_7lciwe6a6m0h.mp4">
+            <div class="reel-card" data-video-src="../../assets/reels/puretive/posts/3_snapgram.io_7lciwe6a6m0h.mp4" data-preview-src="../../assets/reels/puretive/posts/3_snapgram.io_7lciwe6a6m0h-preview.mp4" data-poster-src="../../assets/reels/puretive/posts/3_snapgram.io_7lciwe6a6m0h.webp">
               <div class="reel-video-wrapper">
-                <video class="reel-video" preload="metadata" loop playsinline muted>
-                  <source src="../../assets/reels/puretive/posts/3_snapgram.io_7lciwe6a6m0h.mp4" type="video/mp4">
-                  
-                </video>
+                <img class="reel-poster" src="../../assets/reels/puretive/posts/3_snapgram.io_7lciwe6a6m0h.webp" alt="Puretive Reel" loading="lazy" decoding="async">
+                <video class="reel-video" preload="none" loop playsinline muted></video>
                 <div class="reel-overlay-scrim"></div>
                 
-                <!-- Bottom controls: ONLY Mute and Pause/Play buttons -->
+                <!-- Bottom controls: Mute and Pause/Play buttons -->
                 <div class="reel-card-controls">
                   <button type="button" class="reel-btn reel-audio-btn" aria-label="Toggle Audio" title="Mute/Unmute">
                     <svg class="icon-mute" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -7785,102 +7769,102 @@ class="hfeed site" id="page">
             
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-01.png" alt="ChatGPT Image Aug 5, 2026, 06_34_18 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-01.webp" alt="ChatGPT Image Aug 5, 2026, 06_34_18 PM.png" loading="lazy" decoding="async" width="941" height="1672">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-02.png" alt="ChatGPT Image Aug 5, 2026, 06_38_19 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-02.webp" alt="ChatGPT Image Aug 5, 2026, 06_38_19 PM.png" loading="lazy" decoding="async" width="941" height="1672">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-03.png" alt="ChatGPT Image Aug 6, 2026, 02_08_31 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-03.webp" alt="ChatGPT Image Aug 6, 2026, 02_08_31 PM.png" loading="lazy" decoding="async" width="1062" height="1480">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-04.png" alt="ChatGPT Image Aug 6, 2026, 02_09_22 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-04.webp" alt="ChatGPT Image Aug 6, 2026, 02_09_22 PM.png" loading="lazy" decoding="async" width="1024" height="1536">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-05.png" alt="ChatGPT Image Aug 6, 2026, 02_20_57 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-05.webp" alt="ChatGPT Image Aug 6, 2026, 02_20_57 PM.png" loading="lazy" decoding="async" width="1085" height="1450">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-06.png" alt="ChatGPT Image Aug 6, 2026, 02_21_29 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-06.webp" alt="ChatGPT Image Aug 6, 2026, 02_21_29 PM.png" loading="lazy" decoding="async" width="1400" height="933">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-07.png" alt="ChatGPT Image Aug 6, 2026, 02_28_02 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-07.webp" alt="ChatGPT Image Aug 6, 2026, 02_28_02 PM.png" loading="lazy" decoding="async" width="1086" height="1448">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-08.png" alt="ChatGPT Image Aug 6, 2026, 02_30_56 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-08.webp" alt="ChatGPT Image Aug 6, 2026, 02_30_56 PM.png" loading="lazy" decoding="async" width="1086" height="1448">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-09.png" alt="ChatGPT Image Aug 6, 2026, 02_34_19 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-09.webp" alt="ChatGPT Image Aug 6, 2026, 02_34_19 PM.png" loading="lazy" decoding="async" width="1086" height="1448">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-10.png" alt="ChatGPT Image Aug 6, 2026, 03_18_48 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-10.webp" alt="ChatGPT Image Aug 6, 2026, 03_18_48 PM.png" loading="lazy" decoding="async" width="1086" height="1448">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-11.png" alt="ChatGPT Image Aug 6, 2026, 03_43_53 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-11.webp" alt="ChatGPT Image Aug 6, 2026, 03_43_53 PM.png" loading="lazy" decoding="async" width="1400" height="1050">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-12.png" alt="ChatGPT Image Aug 6, 2026, 12_39_30 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-12.webp" alt="ChatGPT Image Aug 6, 2026, 12_39_30 PM.png" loading="lazy" decoding="async" width="1400" height="1050">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-13.png" alt="ChatGPT Image Aug 6, 2026, 12_46_42 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-13.webp" alt="ChatGPT Image Aug 6, 2026, 12_46_42 PM.png" loading="lazy" decoding="async" width="1024" height="1536">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-14.png" alt="ChatGPT Image Aug 6, 2026, 12_56_12 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-14.webp" alt="ChatGPT Image Aug 6, 2026, 12_56_12 PM.png" loading="lazy" decoding="async" width="1024" height="1536">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-15.png" alt="ChatGPT Image Aug 7, 2026, 10_16_06 AM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-15.webp" alt="ChatGPT Image Aug 7, 2026, 10_16_06 AM.png" loading="lazy" decoding="async" width="1400" height="975">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-16.png" alt="ChatGPT Image Jul 18, 2026, 11_22_15 AM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-16.webp" alt="ChatGPT Image Jul 18, 2026, 11_22_15 AM.png" loading="lazy" decoding="async" width="1024" height="1536">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-17.jpg" alt="Firefly (2) (2).jpg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-17.webp" alt="Firefly (2) (2).jpg" loading="lazy" decoding="async" width="1400" height="1050">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-18.jpg" alt="Firefly (15) copy.jpg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-18.webp" alt="Firefly (15) copy.jpg" loading="lazy" decoding="async" width="1400" height="1050">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-19.jpg" alt="ssdfs.jpg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-19.webp" alt="ssdfs.jpg" loading="lazy" decoding="async" width="1400" height="800">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-20.jpg" alt="WW.jpg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/art-direction/art-direction-20.webp" alt="WW.jpg" loading="lazy" decoding="async" width="1023" height="1537">
                 </div>
               </div>
           </div>
@@ -7914,42 +7898,42 @@ class="hfeed site" id="page">
                 
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-01.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.26 AM (1).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-01.webp" alt="WhatsApp Image 2026-07-23 at 11.59.26 AM (1).jpeg" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-02.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.27 AM (1).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-02.webp" alt="WhatsApp Image 2026-07-23 at 11.59.27 AM (1).jpeg" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-03.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.27 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-03.webp" alt="WhatsApp Image 2026-07-23 at 11.59.27 AM.jpeg" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-04.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.32 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-04.webp" alt="WhatsApp Image 2026-07-23 at 11.59.32 AM.jpeg" loading="lazy" decoding="async" width="1086" height="1448">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-05.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.33 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-05.webp" alt="WhatsApp Image 2026-07-23 at 11.59.33 AM.jpeg" loading="lazy" decoding="async" width="900" height="1600">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-06.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.34 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-06.webp" alt="WhatsApp Image 2026-07-23 at 11.59.34 AM.jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-07.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.43 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-07.webp" alt="WhatsApp Image 2026-07-23 at 11.59.43 AM.jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-08.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.54 AM (1).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-01/carousel-01-08.webp" alt="WhatsApp Image 2026-07-23 at 11.59.54 AM (1).jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               </div>
@@ -7968,37 +7952,37 @@ class="hfeed site" id="page">
                 
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-02/carousel-02-01.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.17 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-02/carousel-02-01.webp" alt="WhatsApp Image 2026-07-23 at 11.59.17 AM.jpeg" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-02/carousel-02-02.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.18 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-02/carousel-02-02.webp" alt="WhatsApp Image 2026-07-23 at 11.59.18 AM.jpeg" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-02/carousel-02-03.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.20 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-02/carousel-02-03.webp" alt="WhatsApp Image 2026-07-23 at 11.59.20 AM.jpeg" loading="lazy" decoding="async" width="1092" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-02/carousel-02-04.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.21 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-02/carousel-02-04.webp" alt="WhatsApp Image 2026-07-23 at 11.59.21 AM.jpeg" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-02/carousel-02-05.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.22 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-02/carousel-02-05.webp" alt="WhatsApp Image 2026-07-23 at 11.59.22 AM.jpeg" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-02/carousel-02-06.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.23 AM (1).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-02/carousel-02-06.webp" alt="WhatsApp Image 2026-07-23 at 11.59.23 AM (1).jpeg" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-02/carousel-02-07.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.23 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-02/carousel-02-07.webp" alt="WhatsApp Image 2026-07-23 at 11.59.23 AM.jpeg" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               </div>
@@ -8017,32 +8001,32 @@ class="hfeed site" id="page">
                 
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-03/carousel-03-01.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.57 AM (1).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-03/carousel-03-01.webp" alt="WhatsApp Image 2026-07-23 at 11.59.57 AM (1).jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-03/carousel-03-02.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.57 AM (2).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-03/carousel-03-02.webp" alt="WhatsApp Image 2026-07-23 at 11.59.57 AM (2).jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-03/carousel-03-03.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.57 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-03/carousel-03-03.webp" alt="WhatsApp Image 2026-07-23 at 11.59.57 AM.jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-03/carousel-03-04.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.59 AM (1).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-03/carousel-03-04.webp" alt="WhatsApp Image 2026-07-23 at 11.59.59 AM (1).jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-03/carousel-03-05.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.59 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-03/carousel-03-05.webp" alt="WhatsApp Image 2026-07-23 at 11.59.59 AM.jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-03/carousel-03-06.jpeg" alt="WhatsApp Image 2026-07-23 at 12.00.03 PM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-03/carousel-03-06.webp" alt="WhatsApp Image 2026-07-23 at 12.00.03 PM.jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               </div>
@@ -8061,42 +8045,42 @@ class="hfeed site" id="page">
                 
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-01.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.25 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-01.webp" alt="WhatsApp Image 2026-07-23 at 11.59.25 AM.jpeg" loading="lazy" decoding="async" width="1092" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-02.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.29 AM (1).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-02.webp" alt="WhatsApp Image 2026-07-23 at 11.59.29 AM (1).jpeg" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-03.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.29 AM (2).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-03.webp" alt="WhatsApp Image 2026-07-23 at 11.59.29 AM (2).jpeg" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-04.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.29 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-04.webp" alt="WhatsApp Image 2026-07-23 at 11.59.29 AM.jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-05.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.30 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-05.webp" alt="WhatsApp Image 2026-07-23 at 11.59.30 AM.jpeg" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-06.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.31 AM (1).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-06.webp" alt="WhatsApp Image 2026-07-23 at 11.59.31 AM (1).jpeg" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-07.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.31 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-07.webp" alt="WhatsApp Image 2026-07-23 at 11.59.31 AM.jpeg" loading="lazy" decoding="async" width="1091" height="1442">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-08.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.32 AM (1).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-04/carousel-04-08.webp" alt="WhatsApp Image 2026-07-23 at 11.59.32 AM (1).jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               </div>
@@ -8115,32 +8099,32 @@ class="hfeed site" id="page">
                 
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-05/carousel-05-01.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.45 AM (1).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-05/carousel-05-01.webp" alt="WhatsApp Image 2026-07-23 at 11.59.45 AM (1).jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-05/carousel-05-02.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.45 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-05/carousel-05-02.webp" alt="WhatsApp Image 2026-07-23 at 11.59.45 AM.jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-05/carousel-05-03.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.52 AM (1).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-05/carousel-05-03.webp" alt="WhatsApp Image 2026-07-23 at 11.59.52 AM (1).jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-05/carousel-05-04.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.52 AM (2).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-05/carousel-05-04.webp" alt="WhatsApp Image 2026-07-23 at 11.59.52 AM (2).jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-05/carousel-05-05.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.52 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-05/carousel-05-05.webp" alt="WhatsApp Image 2026-07-23 at 11.59.52 AM.jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-05/carousel-05-06.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.53 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-05/carousel-05-06.webp" alt="WhatsApp Image 2026-07-23 at 11.59.53 AM.jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               </div>
@@ -8159,57 +8143,57 @@ class="hfeed site" id="page">
                 
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-01.png" alt="ChatGPT Image Jul 23, 2026, 02_20_34 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-01.webp" alt="ChatGPT Image Jul 23, 2026, 02_20_34 PM.png" loading="lazy" decoding="async" width="1024" height="1536">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-02.png" alt="ChatGPT Image Jul 23, 2026, 02_47_14 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-02.webp" alt="ChatGPT Image Jul 23, 2026, 02_47_14 PM.png" loading="lazy" decoding="async" width="1024" height="1536">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-03.png" alt="ChatGPT Image Jul 23, 2026, 02_55_16 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-03.webp" alt="ChatGPT Image Jul 23, 2026, 02_55_16 PM.png" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-04.png" alt="ChatGPT Image Jul 23, 2026, 05_23_11 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-04.webp" alt="ChatGPT Image Jul 23, 2026, 05_23_11 PM.png" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-05.png" alt="ChatGPT Image Jul 23, 2026, 05_28_41 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-05.webp" alt="ChatGPT Image Jul 23, 2026, 05_28_41 PM.png" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-06.png" alt="ChatGPT Image Jul 23, 2026, 05_59_19 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-06.webp" alt="ChatGPT Image Jul 23, 2026, 05_59_19 PM.png" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-07.png" alt="ChatGPT Image Jul 23, 2026, 12_29_55 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-07.webp" alt="ChatGPT Image Jul 23, 2026, 12_29_55 PM.png" loading="lazy" decoding="async" width="1024" height="1536">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-08.png" alt="ChatGPT Image Jul 23, 2026, 12_32_12 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-08.webp" alt="ChatGPT Image Jul 23, 2026, 12_32_12 PM.png" loading="lazy" decoding="async" width="1024" height="1536">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-09.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.24 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-09.webp" alt="WhatsApp Image 2026-07-23 at 11.59.24 AM.jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-10.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.25 AM (1).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-10.webp" alt="WhatsApp Image 2026-07-23 at 11.59.25 AM (1).jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-11.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.26 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-06/carousel-06-11.webp" alt="WhatsApp Image 2026-07-23 at 11.59.26 AM.jpeg" loading="lazy" decoding="async" width="1122" height="1402">
                 </div>
               </div>
               </div>
@@ -8228,32 +8212,32 @@ class="hfeed site" id="page">
                 
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-07/carousel-07-01.png" alt="ChatGPT Image Jul 23, 2026, 12_06_47 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-07/carousel-07-01.webp" alt="ChatGPT Image Jul 23, 2026, 12_06_47 PM.png" loading="lazy" decoding="async" width="1086" height="1448">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-07/carousel-07-02.png" alt="ChatGPT Image Jul 23, 2026, 12_10_51 PM.png" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-07/carousel-07-02.webp" alt="ChatGPT Image Jul 23, 2026, 12_10_51 PM.png" loading="lazy" decoding="async" width="1086" height="1448">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-07/carousel-07-03.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.54 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-07/carousel-07-03.webp" alt="WhatsApp Image 2026-07-23 at 11.59.54 AM.jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-07/carousel-07-04.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.55 AM (1).jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-07/carousel-07-04.webp" alt="WhatsApp Image 2026-07-23 at 11.59.55 AM (1).jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-07/carousel-07-05.jpeg" alt="WhatsApp Image 2026-07-23 at 11.59.55 AM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-07/carousel-07-05.webp" alt="WhatsApp Image 2026-07-23 at 11.59.55 AM.jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               <div class="totale-media-card puretive-3-4-card">
                 <div class="puretive-img-wrap">
-                  <img src="../../assets/images/puretive-campaigns/carousel-07/carousel-07-06.jpeg" alt="WhatsApp Image 2026-07-23 at 12.00.05 PM.jpeg" loading="lazy">
+                  <img src="../../assets/images/puretive-campaigns/carousel-07/carousel-07-06.webp" alt="WhatsApp Image 2026-07-23 at 12.00.05 PM.jpeg" loading="lazy" decoding="async" width="1080" height="1440">
                 </div>
               </div>
               </div>
@@ -8437,22 +8421,10 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 
 <script id="puretive-reels-script">
   document.addEventListener('DOMContentLoaded', function () {
-    const cards = document.querySelectorAll('.reel-card');
-    
-    // IntersectionObserver to auto-play muted videos when in viewport
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const video = entry.target.querySelector('video');
-        if (!video) return;
-        if (entry.isIntersecting) {
-          video.play().catch(() => {});
-          updatePlayIcon(entry.target, true);
-        } else {
-          video.pause();
-          updatePlayIcon(entry.target, false);
-        }
-      });
-    }, { threshold: 0.25 });
+    const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    const maxActiveMobile = 3;
+    const activeMobileSet = new Set();
+    const visibleCards = new Set();
 
     function updatePlayIcon(card, isPlaying) {
       const playIcon = card.querySelector('.icon-play');
@@ -8472,50 +8444,136 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
       }
     }
 
-    cards.forEach(card => {
-      const video = card.querySelector('video');
+    function playCardPreview(card) {
+      const video = card.querySelector('.reel-video');
+      if (!video) return;
+      if (!video.src && card.dataset.previewSrc) {
+        video.src = card.dataset.previewSrc;
+        video.load();
+      }
+      video.muted = true;
+      video.play().then(function() {
+        video.classList.add('is-playing');
+        updatePlayIcon(card, true);
+      }).catch(function() {});
+    }
+
+    function pauseCardPreview(card) {
+      const video = card.querySelector('.reel-video');
+      if (!video) return;
+      video.pause();
+      video.classList.remove('is-playing');
+      updatePlayIcon(card, false);
+    }
+
+    function refreshMobileActive() {
+      if (!isTouch) return;
+      // Start previews for visible cards up to limit
+      for (const card of visibleCards) {
+        if (activeMobileSet.size >= maxActiveMobile) break;
+        if (!activeMobileSet.has(card)) {
+          activeMobileSet.add(card);
+          playCardPreview(card);
+        }
+      }
+    }
+
+    // IntersectionObserver for Mobile / Touch
+    const mobileObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        const card = entry.target;
+        if (entry.isIntersecting) {
+          visibleCards.add(card);
+          if (activeMobileSet.size < maxActiveMobile) {
+            activeMobileSet.add(card);
+            playCardPreview(card);
+          }
+        } else {
+          visibleCards.delete(card);
+          if (activeMobileSet.has(card)) {
+            activeMobileSet.delete(card);
+            pauseCardPreview(card);
+            refreshMobileActive();
+          }
+        }
+      });
+    }, { threshold: 0.35 });
+
+    function initCard(card) {
+      if (card._initialized) return;
+      card._initialized = true;
+
+      const video = card.querySelector('.reel-video');
       const audioBtn = card.querySelector('.reel-audio-btn');
       const playBtn = card.querySelector('.reel-play-btn');
 
-      if (!video) return;
-      observer.observe(card);
+      if (!isTouch) {
+        // Desktop: Hover triggers preview
+        card.addEventListener('mouseenter', function () {
+          playCardPreview(card);
+        });
+        card.addEventListener('mouseleave', function () {
+          pauseCardPreview(card);
+        });
+      } else {
+        // Mobile / Touch: Observe for viewport entry
+        if (!card.classList.contains('reel-card-hidden')) {
+          mobileObserver.observe(card);
+        }
+      }
 
-      // Audio toggle
-      if (audioBtn) {
-        audioBtn.addEventListener('click', (e) => {
+      // Audio Toggle Button
+      if (audioBtn && video) {
+        audioBtn.addEventListener('click', function (e) {
           e.stopPropagation();
           video.muted = !video.muted;
           updateMuteIcon(card, video.muted);
         });
       }
 
-      // Play/Pause toggle
-      if (playBtn) {
-        playBtn.addEventListener('click', (e) => {
+      // Play/Pause Button
+      if (playBtn && video) {
+        playBtn.addEventListener('click', function (e) {
           e.stopPropagation();
           if (video.paused) {
-            video.play().catch(() => {});
-            updatePlayIcon(card, true);
+            playCardPreview(card);
           } else {
-            video.pause();
-            updatePlayIcon(card, false);
+            pauseCardPreview(card);
           }
         });
       }
 
-      // Clicking video toggles play/pause
-      video.addEventListener('click', () => {
-        if (video.paused) {
-          video.play().catch(() => {});
-          updatePlayIcon(card, true);
-        } else {
-          video.pause();
-          updatePlayIcon(card, false);
+      // Clicking card opens full lightbox
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('.reel-btn')) return;
+        if (window.openCreativeLightboxForCard) {
+          window.openCreativeLightboxForCard(card);
+        }
+      });
+    }
+
+    document.querySelectorAll('.reel-card').forEach(initCard);
+
+    // Show More Buttons
+    document.querySelectorAll('.reels-show-more-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const section = btn.closest('.reels-block');
+        if (!section) return;
+        const hiddenCards = section.querySelectorAll('.reel-card.reel-card-hidden');
+        hiddenCards.forEach(function (c) {
+          c.classList.remove('reel-card-hidden');
+          c.style.display = '';
+          initCard(c);
+          if (isTouch) mobileObserver.observe(c);
+        });
+        btn.parentElement.remove();
+        if (window.refreshCreativeLightbox) {
+          window.refreshCreativeLightbox();
         }
       });
     });
   });
-</script>
+  </script>
 
 
 <!-- LIGHTBOX POPUP -->
@@ -8536,7 +8594,6 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 
 <script id="lightbox-script">
 (function() {
-  // Guard: only run once
   if (window.__lbInitialized) return;
   window.__lbInitialized = true;
 
@@ -8549,30 +8606,30 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
   var lbCounter = document.getElementById('lb-counter');
   var backdrop  = document.getElementById('lb-backdrop');
 
-  var items = [];         // [{type:'video'|'image', src:string, card: Element}]
+  var items = [];
   var currentIdx = -1;
-  var lastScrollY = 0;
 
   function collectItems() {
     items = [];
-    // Reel cards (video)
-    document.querySelectorAll('.reel-card').forEach(function(card) {
-      var source = card.querySelector('source');
-      var video  = card.querySelector('video');
-      var src = (source && source.src) || (video && video.src) || '';
-      if (!src && source) src = source.getAttribute('src');
-      if (!src && video)  src = video.getAttribute('src');
+    // Reel cards (video) - only visible/unhidden
+    document.querySelectorAll('.reel-card:not(.reel-card-hidden)').forEach(function(card) {
+      var src = card.dataset.videoSrc || '';
+      if (!src) {
+        var source = card.querySelector('source');
+        var video  = card.querySelector('video');
+        src = (source && (source.src || source.getAttribute('src'))) || (video && (video.src || video.getAttribute('src'))) || '';
+      }
       if (src) items.push({ type: 'video', src: src, card: card });
     });
     // Image cards (totale)
     document.querySelectorAll('.totale-media-card').forEach(function(card) {
       var img = card.querySelector('img');
-      var src = img ? (img.src || img.getAttribute('src')) : '';
+      var src = img ? (img.currentSrc || img.src || img.getAttribute('src')) : '';
       if (src) items.push({ type: 'image', src: src, card: card });
     });
     // Puretive post cards (image)
     document.querySelectorAll('.puretive-post-card img').forEach(function(img) {
-      var src = img.src || img.getAttribute('src');
+      var src = img.currentSrc || img.src || img.getAttribute('src');
       var card = img.closest('.puretive-post-card');
       if (src && card) items.push({ type: 'image', src: src, card: card });
     });
@@ -8583,7 +8640,6 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
     currentIdx = idx;
     var item = items[idx];
 
-    // Reset both
     lbVideo.classList.remove('lb-active');
     lbImage.classList.remove('lb-active');
     lbVideo.pause();
@@ -8592,6 +8648,8 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 
     if (item.type === 'video') {
       lbVideo.src = item.src;
+      lbVideo.controls = true;
+      lbVideo.muted = false;
       lbVideo.classList.add('lb-active');
       lbVideo.load();
       lbVideo.play().catch(function() {});
@@ -8600,17 +8658,16 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
       lbImage.classList.add('lb-active');
     }
 
-    // Pause the inline card video
-    var inlineVid = item.card.querySelector('video');
-    if (inlineVid && !inlineVid.paused) {
-      inlineVid.pause();
-      item.card._wasPaused = false;
-    } else {
-      item.card._wasPaused = true;
+    // Pause the inline card preview video
+    if (item.card) {
+      var inlineVid = item.card.querySelector('video');
+      if (inlineVid && !inlineVid.paused) {
+        inlineVid.pause();
+        inlineVid.classList.remove('is-playing');
+      }
     }
 
     lbCounter.textContent = (idx + 1) + ' / ' + items.length;
-    lastScrollY = window.scrollY;
     lb.classList.add('lb-open');
     lb.style.display = '';
     document.body.style.overflow = 'hidden';
@@ -8624,14 +8681,6 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
     lbImage.classList.remove('lb-active');
     lb.classList.remove('lb-open');
     document.body.style.overflow = '';
-    // Restore inline video if it was playing
-    if (currentIdx >= 0 && items[currentIdx]) {
-      var card = items[currentIdx].card;
-      var inlineVid = card.querySelector('video');
-      if (inlineVid && !card._wasPaused) {
-        inlineVid.play().catch(function() {});
-      }
-    }
     currentIdx = -1;
   }
 
@@ -8645,34 +8694,28 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
     openLightbox((currentIdx - 1 + items.length) % items.length);
   }
 
-  // Attach click listeners to cards
-  function attachCardListeners() {
-    document.querySelectorAll('.reel-card').forEach(function(card) {
-      card.addEventListener('click', function(e) {
-        // Don't open if clicking mute/play buttons
-        if (e.target.closest('.reel-mute-btn') || e.target.closest('.reel-play-btn')) return;
-        collectItems();
-        var idx = items.findIndex(function(item) { return item.card === card; });
-        if (idx >= 0) openLightbox(idx);
-      });
-    });
+  window.openCreativeLightboxForCard = function(card) {
+    collectItems();
+    var idx = items.findIndex(function(it) { return it.card === card; });
+    if (idx >= 0) openLightbox(idx);
+  };
 
-    document.querySelectorAll('.totale-media-card').forEach(function(card) {
-      card.addEventListener('click', function(e) {
-        collectItems();
-        var idx = items.findIndex(function(item) { return item.card === card; });
-        if (idx >= 0) openLightbox(idx);
-      });
-    });
-  }
+  window.refreshCreativeLightbox = collectItems;
 
-  // Controls
+  // Totale card click listeners
+  document.querySelectorAll('.totale-media-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      collectItems();
+      var idx = items.findIndex(function(it) { return it.card === card; });
+      if (idx >= 0) openLightbox(idx);
+    });
+  });
+
   lbClose.addEventListener('click', closeLightbox);
   backdrop.addEventListener('click', closeLightbox);
   lbNext.addEventListener('click', function(e) { e.stopPropagation(); showNext(); });
   lbPrev.addEventListener('click', function(e) { e.stopPropagation(); showPrev(); });
 
-  // Keyboard
   document.addEventListener('keydown', function(e) {
     if (!lb.classList.contains('lb-open')) return;
     if (e.key === 'Escape')      closeLightbox();
@@ -8680,14 +8723,9 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
     if (e.key === 'ArrowLeft')   showPrev();
   });
 
-  // Init on DOMContentLoaded or immediately if already loaded
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', attachCardListeners);
-  } else {
-    attachCardListeners();
-  }
+  collectItems();
 })();
-</script>
+  </script>
 
 
 
